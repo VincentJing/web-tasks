@@ -12,13 +12,13 @@ class Student                                #学生类
      return @stu_id
    end
 
-   def display_details()
-      print "Student id #@stu_id  "
-      print "name #@stu_name  "
-      print "gender #@stu_gender  "
-      puts "age #@stu_age"
+   def getStu_age
+     return @stu_age
    end
 
+   def getStu_name
+     return @stu_name[0]
+   end
    def info()                         #返回学生信息的字符串
      s = format("%03d", @stu_id)
      return s + "  " + @stu_name + "  " + @stu_gender.to_s + "   " + @stu_age.to_s + "\n"
@@ -51,6 +51,57 @@ class Student                                #学生类
    end
    aFile.close
  end
+
+ def orderById (students)
+   j = 0
+   while j < students.length-1
+     k = 0
+     while k < students.length-1-j
+       if students[k].getStu_id > students[k+1].getStu_id
+         temp = students[k]
+         students[k] = students[k+1]
+         students[k+1] = temp
+       end
+       k += 1
+     end
+     j += 1
+   end
+   return students
+ end
+ def orderByAge (students)
+   j = 0
+   while j < students.length-1
+     k = 0
+     while k < students.length-1-j
+       if students[k].getStu_age > students[k+1].getStu_age
+         temp = students[k]
+         students[k] = students[k+1]
+         students[k+1] = temp
+       end
+       k += 1
+     end
+     j += 1
+   end
+   return students
+ end
+
+def orderByName (students)
+  j = 0
+  while j < students.length-1
+    k = 0
+    while k < students.length-1-j
+      if students[k].getStu_name> students[k+1].getStu_name
+        temp = students[k]
+        students[k] = students[k+1]
+        students[k+1] = temp
+      end
+      k += 1
+    end
+    j += 1
+  end
+  return students
+
+end
 i = 1
 if File::exists?( "student.yml" )                                          #若student.yml存在，则将按照文件信息来创建学生对象
   arr = IO.readlines("student.yml")
@@ -125,6 +176,37 @@ when 4
     i += 1
   end
 when 5
+  puts "1.Id排序 2.Name排序 3.Age排序（请输入操作前的数字）"
+  n = gets
+  case n.to_i
+  when 1
+    students = orderById(students)
+    i = 0
+    puts "id   name   gender  age "
+    while i < students.length
+      print students[i].info
+      i += 1
+    end
+  when 2
+    students = orderByName(students)
+    i = 0
+    puts "id   name   gender  age "
+    while i < students.length
+      print students[i].info
+      i += 1
+    end
+
+  when 3
+    students = orderByAge(students)
+    i = 0
+    puts "id   name   gender  age "
+    while i < students.length
+      print students[i].info
+      i += 1
+    end
+  else
+    puts "请输入正确的编号"
+  end
 
 else
   puts "请输入正确的编号"
