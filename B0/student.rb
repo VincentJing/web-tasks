@@ -125,89 +125,93 @@ else                                        #用循环创建随机学生对象
   puts students.length
   store_stu(students)                                      #存储学生信息
 end
+while 1
+  puts "                      学生管理"
+  puts "1.添加学生  2.删除学生  3.修改学生   4.查询学生  5.学生排序 0.退出程序"
+  puts "请输入操作前面的编号："
+  num = gets
 
-puts "                      学生管理"
-puts "1.添加学生  2.删除学生  3.修改学生   4.查询学生  5.学生排序"
-puts "请输入操作前面的编号："
-num = gets
-
-case num.to_i
-when 1
-  students.push( add_stu)
-  store_stu(students)
-when 2
-  i = 0
-  puts "请输入要删除学生的id"
-  n = gets
-  while i < students.length
-    if students[i].getStu_id == n.to_i
-      students.delete_at(i)
-      break
-    end
-    i += 1
-  end
-  store_stu(students)
-
-when 3
-  i = 0
-  puts "请输入要修改学生的id"
-  n = gets
-  stu = add_stu
-  while i < students.length
-    if students[i].getStu_id == n.to_i
-      students.delete_at(i)
-      students[i] = stu
-      break
-    end
-    i += 1
-  end
-  store_stu(students)
-
-when 4
-  i = 0
-  puts "请输入要查询学生的id"
-  n = gets
-  while i < students.length
-    if students[i].getStu_id == n.to_i
-      puts "id   name   gender  age "
-      puts students[i].info()
-      break
-    end
-    i += 1
-  end
-when 5
-  puts "1.Id排序 2.Name排序 3.Age排序（请输入操作前的数字）"
-  n = gets
-  case n.to_i
+  case num.to_i
+  when 0
+    exit(0)
   when 1
-    students = orderById(students)
-    i = 0
-    puts "id   name   gender  age "
-    while i < students.length
-      print students[i].info
-      i += 1
-    end
+    students.push( add_stu)
+    store_stu(students)
   when 2
-    students = orderByName(students)
     i = 0
-    puts "id   name   gender  age "
+    puts "请输入要删除学生的id"
+    n = gets
     while i < students.length
-      print students[i].info
+      if students[i].getStu_id == n.to_i
+        students.delete_at(i)
+        break
+      end
       i += 1
     end
+    store_stu(students)
 
   when 3
-    students = orderByAge(students)
     i = 0
-    puts "id   name   gender  age "
+    puts "请输入要修改学生的id"
+    n = gets
+    stu = add_stu
     while i < students.length
-      print students[i].info
+      if students[i].getStu_id == n.to_i
+        students.delete_at(i)
+        students[i] = stu
+        break
+      end
       i += 1
     end
+    store_stu(students)
+
+  when 4
+    i = 0
+    puts "请输入要查询学生的id"
+    n = gets
+    while i < students.length
+      if students[i].getStu_id == n.to_i
+        puts "id   name   gender  age "
+        puts students[i].info()
+        break
+      end
+      i += 1
+    end
+  when 5
+    puts "1.Id排序 2.Name排序 3.Age排序（请输入操作前的数字）"
+    n = gets
+    case n.to_i
+    when 1
+      students = orderById(students)
+      i = 0
+      puts "id   name   gender  age "
+      while i < students.length
+        print students[i].info
+        i += 1
+      end
+    when 2
+      students = orderByName(students)
+      i = 0
+      puts "id   name   gender  age "
+      while i < students.length
+        print students[i].info
+        i += 1
+      end
+
+    when 3
+      students = orderByAge(students)
+      i = 0
+      puts "id   name   gender  age "
+      while i < students.length
+        print students[i].info
+        i += 1
+      end
+    else
+      puts "请输入正确的编号"
+    end
+
   else
     puts "请输入正确的编号"
   end
 
-else
-  puts "请输入正确的编号"
 end
