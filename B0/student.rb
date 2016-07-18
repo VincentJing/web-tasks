@@ -52,7 +52,7 @@ class Student                                #学生类
    aFile.close
  end
 
- def orderById (students)
+ def orderById (students)                          #冒泡法排序
    j = 0
    while j < students.length-1
      k = 0
@@ -100,8 +100,17 @@ def orderByName (students)
     j += 1
   end
   return students
-
 end
+
+def shoeInfo (students)
+  i = 0
+  puts "id   name   gender  age "
+  while i < students.length
+    print students[i].info
+    i += 1
+  end
+end
+
 i = 1
 if File::exists?( "student.yml" )                                          #若student.yml存在，则将按照文件信息来创建学生对象
   arr = IO.readlines("student.yml")
@@ -122,7 +131,6 @@ else                                        #用循环创建随机学生对象
     students[i-1] = Student.new(i, s_name, s_gender, s_age)
     i += 1
   end
-  puts students.length
   store_stu(students)                                      #存储学生信息
 end
 while 1
@@ -147,6 +155,9 @@ while 1
         break
       end
       i += 1
+    end
+    if i == students.length
+      puts "此学生不存在！"
     end
     store_stu(students)
 
@@ -177,35 +188,22 @@ while 1
       end
       i += 1
     end
+    if i == students.length
+      puts "此学生不存在！"
+    end
   when 5
     puts "1.Id排序 2.Name排序 3.Age排序（请输入操作前的数字）"
     n = gets
     case n.to_i
     when 1
       students = orderById(students)
-      i = 0
-      puts "id   name   gender  age "
-      while i < students.length
-        print students[i].info
-        i += 1
-      end
+      shoeInfo(students)
     when 2
       students = orderByName(students)
-      i = 0
-      puts "id   name   gender  age "
-      while i < students.length
-        print students[i].info
-        i += 1
-      end
-
+      shoeInfo(students)
     when 3
       students = orderByAge(students)
-      i = 0
-      puts "id   name   gender  age "
-      while i < students.length
-        print students[i].info
-        i += 1
-      end
+      shoeInfo(students)
     else
       puts "请输入正确的编号"
     end
