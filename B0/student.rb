@@ -1,6 +1,11 @@
 #!/usr/bin/ruby
 
-class Student                                #学生类
+class Student                #学生类
+  attr_accessor :stu_id                    #attr_accessor 自动创建get set方法
+  attr_accessor :stu_age
+  attr_accessor :stu_name
+  attr_accessor :stu_gender
+
    def initialize(id, name, gender, age)
       @stu_id=id
       @stu_name=name
@@ -8,17 +13,6 @@ class Student                                #学生类
       @stu_age=age
    end
 
-   def getStu_id
-     return @stu_id
-   end
-
-   def getStu_age
-     return @stu_age
-   end
-
-   def getStu_name
-     return @stu_name[0]
-   end
    def info()                         #返回学生信息的字符串
      s = format("%03d", @stu_id)
      return s + "  " + @stu_name + "  " + @stu_gender.to_s + "   " + @stu_age.to_s + "\n"
@@ -57,7 +51,7 @@ class Student                                #学生类
    while j < students.length-1
      k = 0
      while k < students.length-1-j
-       if students[k].getStu_id > students[k+1].getStu_id
+       if students[k].stu_id > students[k+1].stu_id
          temp = students[k]
          students[k] = students[k+1]
          students[k+1] = temp
@@ -68,12 +62,13 @@ class Student                                #学生类
    end
    return students
  end
+
  def orderByAge (students)
    j = 0
    while j < students.length-1
      k = 0
      while k < students.length-1-j
-       if students[k].getStu_age > students[k+1].getStu_age
+       if students[k].stu_age > students[k+1].stu_age
          temp = students[k]
          students[k] = students[k+1]
          students[k+1] = temp
@@ -90,7 +85,7 @@ def orderByName (students)
   while j < students.length-1
     k = 0
     while k < students.length-1-j
-      if students[k].getStu_name> students[k+1].getStu_name
+      if students[k].stu_name[0]> students[k+1].stu_name[0]
         temp = students[k]
         students[k] = students[k+1]
         students[k+1] = temp
@@ -150,7 +145,7 @@ while 1
     puts "请输入要删除学生的id"
     n = gets
     while i < students.length
-      if students[i].getStu_id == n.to_i
+      if students[i].stu_id == n.to_i
         students.delete_at(i)
         break
       end
@@ -167,7 +162,7 @@ while 1
     n = gets
     stu = add_stu
     while i < students.length
-      if students[i].getStu_id == n.to_i
+      if students[i].stu_id == n.to_i
         students.delete_at(i)
         students[i] = stu
         break
@@ -181,7 +176,7 @@ while 1
     puts "请输入要查询学生的id"
     n = gets
     while i < students.length
-      if students[i].getStu_id == n.to_i
+      if students[i].stu_id == n.to_i
         puts "id   name   gender  age "
         puts students[i].info()
         break
