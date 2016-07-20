@@ -1,18 +1,18 @@
 #!/usr/bin/ruby
 require 'yaml'
 class Student                #学生类
-  attr_accessor :stu_id, :stu_age, :stu_name, :stu_gender        #attr_accessor 自动创建get set方法
+  attr_accessor :id, :age, :name, :grade        #attr_accessor 自动创建get set方法
 
-   def initialize(id, name, gender, age)
-      @stu_id = id
-      @stu_name = name
-      @stu_gender = gender
-      @stu_age = age
+   def initialize(id, name, grade, age)
+      @id = id
+      @name = name
+      @grade = grade
+      @age = age
    end
 
-   def info()                         #返回学生信息的字符串
-     s = format("%03d", @stu_id)
-     return s + "  " + @stu_name + "  " + @stu_gender.to_s + "   " + @stu_age.to_s + "\n"
+   def info                         #返回学生信息的字符串
+     s = format("%03d", @id)
+     s + "  " + @name + "  " + @grade.to_s + "   " + @age.to_s + "\n"
    end
 
  end
@@ -26,7 +26,7 @@ class Student                #学生类
  end
 
  def add_stu (i)
-   puts "请输入学生信息（格式为 name gender age 中间以空格隔开）："
+   puts "请输入学生信息（格式为 name grade age 中间以空格隔开）："
    ar = gets.split
    Student.new(i, ar[0], ar[1].to_i, ar[2].to_i)
  end
@@ -37,8 +37,8 @@ class Student                #学生类
    end
  end
 
-def shoeInfo (students)
-  puts "id   name   gender  age "
+def showInfo (students)
+  puts "id   name   grade   age "
   students.length.times do |i|
     print students[i].info
   end
@@ -52,8 +52,8 @@ else                                        #用循环创建随机学生对象
     s_name = newpass(6)
     s_name = s_name.capitalize
     s_age = rand(15..20)
-    s_gender = 2031 - s_age
-    students[i] = Student.new(i+1, s_name, s_gender, s_age)
+    s_grade = 2031 - s_age
+    students[i] = Student.new(i+1, s_name, s_grade, s_age)
   end
   store_stu(students)
 end
@@ -65,18 +65,20 @@ while 1
   num = gets
 
   case num.to_i
+
   when 0
     exit(0)
-  when 1
 
-    students.push( add_stu (students[students.length-1].stu_id+1))
+  when 1
+    students.push(add_stu (students[students.length-1].id+1))
     store_stu(students)
+
   when 2
     j = 0
     puts "请输入要删除学生的id"
     n = gets
     students.length.times do |i|
-      if students[i].stu_id == n.to_i
+      if students[i].id == n.to_i
         students.delete_at(i)
         break
       end
@@ -92,7 +94,7 @@ while 1
     n = gets
     stu = add_stu(n.to_i)
     students.length.times do |i|
-      if students[i].stu_id == n.to_i
+      if students[i].id == n.to_i
         students.delete_at(i)
         students[i] = stu
         break
@@ -105,9 +107,9 @@ while 1
     puts "请输入要查询学生的id"
     n = gets
     students.length.times do |i|
-      if students[i].stu_id == n.to_i
+      if students[i].id == n.to_i
         puts "id   name   gender  age "
-        puts students[i].info()
+        puts students[i].info
         break
       end
       j = i
@@ -115,19 +117,24 @@ while 1
     if j == students.length-1
       puts "此学生不存在！"
     end
+
   when 5
     puts "1.Id排序 2.Name排序 3.Age排序（请输入操作前的数字）"
     n = gets
     case n.to_i
+
     when 1
-      students = students.sort_by {|u| u.stu_id}
-      shoeInfo(students)
+      students = students.sort_by {|u| u.id}
+      showInfo(students)
+
     when 2
-      students = students.sort_by {|u| u.stu_name}
-      shoeInfo(students)
+      students = students.sort_by {|u| u.name}
+      showInfo(students)
+
     when 3
-      students = students.sort_by {|u| u.stu_age}
-      shoeInfo(students)
+      students = students.sort_by {|u| u.age}
+      showInfo(students)
+
     else
       puts "请输入正确的编号"
     end

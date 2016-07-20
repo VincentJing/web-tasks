@@ -1,496 +1,501 @@
 ---
 - !ruby/object:Student
-  stu_id: 2
-  stu_name: Viihyg
-  stu_gender: 2014
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 4
-  stu_name: Pqmjfs
-  stu_gender: 2012
-  stu_age: 19
-- !ruby/object:Student
-  stu_id: 5
-  stu_name: Aohfgx
-  stu_gender: 2012
-  stu_age: 19
-- !ruby/object:Student
-  stu_id: 6
-  stu_name: Mjyrdd
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 7
-  stu_name: Xlexwe
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 8
-  stu_name: Vctidg
-  stu_gender: 2013
-  stu_age: 18
-- !ruby/object:Student
-  stu_id: 9
-  stu_name: Vayufp
-  stu_gender: 2016
-  stu_age: 15
-- !ruby/object:Student
-  stu_id: 10
-  stu_name: Fjcpyh
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 11
-  stu_name: Chspsg
-  stu_gender: 2012
-  stu_age: 19
-- !ruby/object:Student
-  stu_id: 12
-  stu_name: Cfpluh
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 13
-  stu_name: Gllmnh
-  stu_gender: 2012
-  stu_age: 19
-- !ruby/object:Student
-  stu_id: 14
-  stu_name: Rwrnes
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 15
-  stu_name: Yfvyhm
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 16
-  stu_name: Ybtvam
-  stu_gender: 2012
-  stu_age: 19
-- !ruby/object:Student
-  stu_id: 17
-  stu_name: Aldand
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 18
-  stu_name: Whryfy
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 19
-  stu_name: Nlwfsb
-  stu_gender: 2016
-  stu_age: 15
-- !ruby/object:Student
-  stu_id: 20
-  stu_name: Omftqo
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 21
-  stu_name: Lxmhko
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 22
-  stu_name: Smmedm
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 23
-  stu_name: Yorxpp
-  stu_gender: 2012
-  stu_age: 19
-- !ruby/object:Student
-  stu_id: 24
-  stu_name: Wydnju
-  stu_gender: 2013
-  stu_age: 18
-- !ruby/object:Student
-  stu_id: 25
-  stu_name: Hflhgj
-  stu_gender: 2013
-  stu_age: 18
-- !ruby/object:Student
-  stu_id: 26
-  stu_name: Qaaigd
-  stu_gender: 2013
-  stu_age: 18
-- !ruby/object:Student
-  stu_id: 27
-  stu_name: Hkxaxr
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 28
-  stu_name: Qmvdst
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 29
-  stu_name: Qhdera
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 30
-  stu_name: Fjuunc
-  stu_gender: 2012
-  stu_age: 19
-- !ruby/object:Student
-  stu_id: 31
-  stu_name: Jyuqxm
-  stu_gender: 2012
-  stu_age: 19
-- !ruby/object:Student
-  stu_id: 32
-  stu_name: Ocfawh
-  stu_gender: 2013
-  stu_age: 18
-- !ruby/object:Student
-  stu_id: 33
-  stu_name: Xfttdl
-  stu_gender: 2012
-  stu_age: 19
-- !ruby/object:Student
-  stu_id: 34
-  stu_name: Lcqiaj
-  stu_gender: 2016
-  stu_age: 15
-- !ruby/object:Student
-  stu_id: 35
-  stu_name: Envhor
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 36
-  stu_name: Jrvaxa
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 37
-  stu_name: Hjqsln
-  stu_gender: 2013
-  stu_age: 18
-- !ruby/object:Student
-  stu_id: 38
-  stu_name: Kbmtjo
-  stu_gender: 2013
-  stu_age: 18
-- !ruby/object:Student
-  stu_id: 39
-  stu_name: Flncjt
-  stu_gender: 2013
-  stu_age: 18
-- !ruby/object:Student
-  stu_id: 40
-  stu_name: Gceslo
-  stu_gender: 2016
-  stu_age: 15
-- !ruby/object:Student
-  stu_id: 41
-  stu_name: Lucsjp
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 42
-  stu_name: Gnojgv
-  stu_gender: 2016
-  stu_age: 15
-- !ruby/object:Student
-  stu_id: 43
-  stu_name: Gdiitx
-  stu_gender: 2016
-  stu_age: 15
-- !ruby/object:Student
-  stu_id: 44
-  stu_name: Bmcoiw
-  stu_gender: 2012
-  stu_age: 19
-- !ruby/object:Student
-  stu_id: 45
-  stu_name: Ahnqep
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 46
-  stu_name: Fwtlam
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 47
-  stu_name: Hrxmho
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 48
-  stu_name: Qugwqh
-  stu_gender: 2016
-  stu_age: 15
-- !ruby/object:Student
-  stu_id: 49
-  stu_name: Jbghix
-  stu_gender: 2016
-  stu_age: 15
-- !ruby/object:Student
-  stu_id: 50
-  stu_name: Mesuxv
-  stu_gender: 2016
-  stu_age: 15
-- !ruby/object:Student
-  stu_id: 51
-  stu_name: Ntjmaw
-  stu_gender: 2013
-  stu_age: 18
-- !ruby/object:Student
-  stu_id: 52
-  stu_name: Pqbasw
-  stu_gender: 2016
-  stu_age: 15
-- !ruby/object:Student
-  stu_id: 53
-  stu_name: Umkbfw
-  stu_gender: 2016
-  stu_age: 15
-- !ruby/object:Student
-  stu_id: 54
-  stu_name: Yeanva
-  stu_gender: 2015
-  stu_age: 16
-- !ruby/object:Student
-  stu_id: 55
-  stu_name: Aciwjs
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 56
-  stu_name: Smxemd
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 57
-  stu_name: Ipugwi
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 58
-  stu_name: Rbghxu
-  stu_gender: 2013
-  stu_age: 18
-- !ruby/object:Student
-  stu_id: 59
-  stu_name: Qthopi
-  stu_gender: 2013
-  stu_age: 18
-- !ruby/object:Student
-  stu_id: 60
-  stu_name: Fnvcad
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 61
-  stu_name: Tosmor
-  stu_gender: 2015
-  stu_age: 16
-- !ruby/object:Student
-  stu_id: 62
-  stu_name: Cavfmu
-  stu_gender: 2012
-  stu_age: 19
-- !ruby/object:Student
-  stu_id: 63
-  stu_name: Xiihqc
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 64
-  stu_name: Vibsyf
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 65
-  stu_name: Dokocw
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 66
-  stu_name: Eaxtql
-  stu_gender: 2012
-  stu_age: 19
-- !ruby/object:Student
-  stu_id: 67
-  stu_name: Qpprsn
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 68
-  stu_name: Dpjnuq
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 69
-  stu_name: Hfmxxs
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 70
-  stu_name: Rtemor
-  stu_gender: 2015
-  stu_age: 16
-- !ruby/object:Student
-  stu_id: 71
-  stu_name: Vilify
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 72
-  stu_name: Yrbjeg
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 73
-  stu_name: Spqchk
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 74
-  stu_name: Yokuhj
-  stu_gender: 2012
-  stu_age: 19
-- !ruby/object:Student
-  stu_id: 75
-  stu_name: Dvutto
-  stu_gender: 2015
-  stu_age: 16
-- !ruby/object:Student
-  stu_id: 76
-  stu_name: Tkrdav
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 77
-  stu_name: Djmgon
-  stu_gender: 2012
-  stu_age: 19
-- !ruby/object:Student
-  stu_id: 78
-  stu_name: Wtnrck
-  stu_gender: 2016
-  stu_age: 15
-- !ruby/object:Student
-  stu_id: 79
-  stu_name: Webtik
-  stu_gender: 2016
-  stu_age: 15
-- !ruby/object:Student
-  stu_id: 80
-  stu_name: Pgmujf
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 81
-  stu_name: Vemnfk
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 82
-  stu_name: Vabndf
-  stu_gender: 2012
-  stu_age: 19
-- !ruby/object:Student
-  stu_id: 83
-  stu_name: Vlpgbs
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 84
-  stu_name: Yvsfli
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 85
-  stu_name: Xyntsa
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 86
-  stu_name: Qxdlxb
-  stu_gender: 2014
-  stu_age: 17
-- !ruby/object:Student
-  stu_id: 87
-  stu_name: Ljaqhm
-  stu_gender: 2016
-  stu_age: 15
-- !ruby/object:Student
-  stu_id: 88
-  stu_name: Awijfi
-  stu_gender: 2015
-  stu_age: 16
-- !ruby/object:Student
-  stu_id: 89
-  stu_name: Tmtavb
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 90
-  stu_name: Rrpyim
-  stu_gender: 2015
-  stu_age: 16
-- !ruby/object:Student
-  stu_id: 91
-  stu_name: Hjoewk
-  stu_gender: 2015
-  stu_age: 16
-- !ruby/object:Student
-  stu_id: 92
-  stu_name: Thvykc
-  stu_gender: 2016
-  stu_age: 15
-- !ruby/object:Student
-  stu_id: 93
-  stu_name: Fgedht
-  stu_gender: 2013
-  stu_age: 18
-- !ruby/object:Student
-  stu_id: 94
-  stu_name: Fltywj
-  stu_gender: 2016
-  stu_age: 15
-- !ruby/object:Student
-  stu_id: 95
-  stu_name: Nmhcth
-  stu_gender: 2011
-  stu_age: 20
-- !ruby/object:Student
-  stu_id: 96
-  stu_name: Vsvuyj
-  stu_gender: 2013
-  stu_age: 18
-- !ruby/object:Student
-  stu_id: 97
-  stu_name: Gxhlfe
-  stu_gender: 2013
-  stu_age: 18
-- !ruby/object:Student
-  stu_id: 98
-  stu_name: Hixqec
-  stu_gender: 2015
-  stu_age: 16
-- !ruby/object:Student
-  stu_id: 99
-  stu_name: Twnrnu
-  stu_gender: 2015
-  stu_age: 16
-- !ruby/object:Student
-  stu_id: 100
-  stu_name: Rymlvc
-  stu_gender: 2016
-  stu_age: 15
-- !ruby/object:Student
-  stu_id: 101
-  stu_name: Vijhhg
-  stu_gender: 2014
-  stu_age: 20
+  id: 1
+  name: Gdrtal
+  grade: 2016
+  age: 15
+- !ruby/object:Student
+  id: 2
+  name: Tkhwtx
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 3
+  name: Tokksg
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 4
+  name: Qpxxrx
+  grade: 2012
+  age: 19
+- !ruby/object:Student
+  id: 5
+  name: Qbttow
+  grade: 2011
+  age: 20
+- !ruby/object:Student
+  id: 6
+  name: Dsmlvd
+  grade: 2011
+  age: 20
+- !ruby/object:Student
+  id: 7
+  name: Hmqcgk
+  grade: 2016
+  age: 15
+- !ruby/object:Student
+  id: 8
+  name: Fplgjp
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 9
+  name: Kliein
+  grade: 2016
+  age: 15
+- !ruby/object:Student
+  id: 10
+  name: Glivty
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 11
+  name: Jvywge
+  grade: 2012
+  age: 19
+- !ruby/object:Student
+  id: 12
+  name: Phjkjr
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 13
+  name: Vayiyi
+  grade: 2011
+  age: 20
+- !ruby/object:Student
+  id: 14
+  name: Byxdbs
+  grade: 2011
+  age: 20
+- !ruby/object:Student
+  id: 15
+  name: Veujap
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 16
+  name: Iiqpow
+  grade: 2016
+  age: 15
+- !ruby/object:Student
+  id: 17
+  name: Melxsq
+  grade: 2015
+  age: 16
+- !ruby/object:Student
+  id: 18
+  name: Gegkls
+  grade: 2012
+  age: 19
+- !ruby/object:Student
+  id: 19
+  name: Miprap
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 20
+  name: Ptywqw
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 21
+  name: Gwqfvf
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 22
+  name: Cvqlnn
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 23
+  name: Khrwvd
+  grade: 2012
+  age: 19
+- !ruby/object:Student
+  id: 24
+  name: Ptuavg
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 25
+  name: Vtokpv
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 26
+  name: Rafuaq
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 27
+  name: Doubxj
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 28
+  name: Yacfsb
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 29
+  name: Udbnnp
+  grade: 2015
+  age: 16
+- !ruby/object:Student
+  id: 30
+  name: Ifdxqv
+  grade: 2015
+  age: 16
+- !ruby/object:Student
+  id: 31
+  name: Okvvbh
+  grade: 2016
+  age: 15
+- !ruby/object:Student
+  id: 32
+  name: Bjhcte
+  grade: 2015
+  age: 16
+- !ruby/object:Student
+  id: 33
+  name: Pufjwb
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 34
+  name: Xgyfcy
+  grade: 2012
+  age: 19
+- !ruby/object:Student
+  id: 35
+  name: Jgwfnl
+  grade: 2016
+  age: 15
+- !ruby/object:Student
+  id: 36
+  name: Hgctts
+  grade: 2011
+  age: 20
+- !ruby/object:Student
+  id: 37
+  name: Fijorc
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 38
+  name: Xkynvn
+  grade: 2015
+  age: 16
+- !ruby/object:Student
+  id: 39
+  name: Bwqbff
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 40
+  name: Ptxlvo
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 41
+  name: Vlmvtc
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 42
+  name: Uemwrl
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 43
+  name: Doymrr
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 44
+  name: Khbpkw
+  grade: 2012
+  age: 19
+- !ruby/object:Student
+  id: 45
+  name: Tkdnnm
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 46
+  name: Qubhkn
+  grade: 2016
+  age: 15
+- !ruby/object:Student
+  id: 47
+  name: Chrnss
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 48
+  name: Wjcbjg
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 49
+  name: Onfvoh
+  grade: 2012
+  age: 19
+- !ruby/object:Student
+  id: 50
+  name: Idpvot
+  grade: 2011
+  age: 20
+- !ruby/object:Student
+  id: 51
+  name: Hvaljf
+  grade: 2015
+  age: 16
+- !ruby/object:Student
+  id: 52
+  name: Ghuqqd
+  grade: 2015
+  age: 16
+- !ruby/object:Student
+  id: 53
+  name: Xssyjx
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 54
+  name: Rhvxau
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 55
+  name: Pomubr
+  grade: 2015
+  age: 16
+- !ruby/object:Student
+  id: 56
+  name: Vnvkvq
+  grade: 2015
+  age: 16
+- !ruby/object:Student
+  id: 57
+  name: Skljtp
+  grade: 2011
+  age: 20
+- !ruby/object:Student
+  id: 58
+  name: Jkircp
+  grade: 2012
+  age: 19
+- !ruby/object:Student
+  id: 59
+  name: Gfjlyh
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 60
+  name: Rqtpxy
+  grade: 2016
+  age: 15
+- !ruby/object:Student
+  id: 61
+  name: Lmbabh
+  grade: 2015
+  age: 16
+- !ruby/object:Student
+  id: 62
+  name: Dugsve
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 63
+  name: Eahinb
+  grade: 2011
+  age: 20
+- !ruby/object:Student
+  id: 64
+  name: Fyegot
+  grade: 2011
+  age: 20
+- !ruby/object:Student
+  id: 65
+  name: Ksvfmu
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 66
+  name: Xnievk
+  grade: 2011
+  age: 20
+- !ruby/object:Student
+  id: 67
+  name: Wegfwt
+  grade: 2016
+  age: 15
+- !ruby/object:Student
+  id: 68
+  name: Dmhqpe
+  grade: 2015
+  age: 16
+- !ruby/object:Student
+  id: 69
+  name: Bameay
+  grade: 2012
+  age: 19
+- !ruby/object:Student
+  id: 70
+  name: Sfyqvb
+  grade: 2015
+  age: 16
+- !ruby/object:Student
+  id: 71
+  name: Xqnjep
+  grade: 2011
+  age: 20
+- !ruby/object:Student
+  id: 72
+  name: Itlnjc
+  grade: 2015
+  age: 16
+- !ruby/object:Student
+  id: 73
+  name: Xiriwd
+  grade: 2016
+  age: 15
+- !ruby/object:Student
+  id: 74
+  name: Bcdyeo
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 75
+  name: Iloyku
+  grade: 2016
+  age: 15
+- !ruby/object:Student
+  id: 76
+  name: Fcudna
+  grade: 2015
+  age: 16
+- !ruby/object:Student
+  id: 77
+  name: Hyykqt
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 78
+  name: Mmhqrs
+  grade: 2012
+  age: 19
+- !ruby/object:Student
+  id: 79
+  name: Brejux
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 80
+  name: Gwhnet
+  grade: 2015
+  age: 16
+- !ruby/object:Student
+  id: 81
+  name: Kutvqa
+  grade: 2016
+  age: 15
+- !ruby/object:Student
+  id: 82
+  name: Tcnkfu
+  grade: 2011
+  age: 20
+- !ruby/object:Student
+  id: 83
+  name: Osvcmg
+  grade: 2016
+  age: 15
+- !ruby/object:Student
+  id: 84
+  name: Pokevh
+  grade: 2012
+  age: 19
+- !ruby/object:Student
+  id: 85
+  name: Lohdbw
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 86
+  name: Pprtgn
+  grade: 2016
+  age: 15
+- !ruby/object:Student
+  id: 87
+  name: Cajlga
+  grade: 2013
+  age: 18
+- !ruby/object:Student
+  id: 88
+  name: Smwnvs
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 89
+  name: Ttleot
+  grade: 2014
+  age: 17
+- !ruby/object:Student
+  id: 90
+  name: Vkuyeu
+  grade: 2011
+  age: 20
+- !ruby/object:Student
+  id: 91
+  name: Sdjcff
+  grade: 2016
+  age: 15
+- !ruby/object:Student
+  id: 92
+  name: Pfoihx
+  grade: 2016
+  age: 15
+- !ruby/object:Student
+  id: 93
+  name: Dvhsyr
+  grade: 2012
+  age: 19
+- !ruby/object:Student
+  id: 94
+  name: Epmmhb
+  grade: 2016
+  age: 15
+- !ruby/object:Student
+  id: 95
+  name: Qajfeu
+  grade: 2011
+  age: 20
+- !ruby/object:Student
+  id: 96
+  name: Jgdxaf
+  grade: 2011
+  age: 20
+- !ruby/object:Student
+  id: 97
+  name: Auyexf
+  grade: 2015
+  age: 16
+- !ruby/object:Student
+  id: 98
+  name: Rqpmfn
+  grade: 2015
+  age: 16
+- !ruby/object:Student
+  id: 99
+  name: Ycwmvi
+  grade: 2011
+  age: 20
+- !ruby/object:Student
+  id: 100
+  name: Pnjxpg
+  grade: 2015
+  age: 16
