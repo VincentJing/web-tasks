@@ -1,16 +1,13 @@
 #!/usr/bin/ruby
-
+require 'yaml'
 class Student                #学生类
-  attr_accessor :stu_id                    #attr_accessor 自动创建get set方法
-  attr_accessor :stu_age
-  attr_accessor :stu_name
-  attr_accessor :stu_gender
+  attr_accessor :stu_id, :stu_age, :stu_name, :stu_gender        #attr_accessor 自动创建get set方法
 
    def initialize(id, name, gender, age)
-      @stu_id=id
-      @stu_name=name
-      @stu_gender=gender
-      @stu_age=age
+      @stu_id = id
+      @stu_name = name
+      @stu_gender = gender
+      @stu_age = age
    end
 
    def info()                         #返回学生信息的字符串
@@ -28,106 +25,39 @@ class Student                #学生类
    return newpass
  end
 
- def add_stu
-   puts "请输入学生信息（格式为 id name gender age 中间以空格隔开）："
+ def add_stu (i)
+   puts "请输入学生信息（格式为 name gender age 中间以空格隔开）："
    ar = gets.split
-   st = Student.new(ar[0].to_i, ar[1], ar[2].to_i, ar[3].to_i)
-   return st
+   Student.new(i, ar[0], ar[1].to_i, ar[2].to_i)
  end
 
  def store_stu (students)                           #存储学生信息函数
-   aFile = File.new("student.yml", "w+")
-   aFile.syswrite("id   name   gender  age \n")
-   j = 1
-   while j <= students.length
-     aFile.syswrite(students[j-1].info())
-     j += 1
+   File.open("student.yaml","w") do |io|
+   YAML.dump(students,io)
    end
-   aFile.close
  end
-
- def orderById (students)                          #冒泡法排序
-   j = 0
-   while j < students.length-1
-     k = 0
-     while k < students.length-1-j
-       if students[k].stu_id > students[k+1].stu_id
-         temp = students[k]
-         students[k] = students[k+1]
-         students[k+1] = temp
-       end
-       k += 1
-     end
-     j += 1
-   end
-   return students
- end
-
- def orderByAge (students)
-   j = 0
-   while j < students.length-1
-     k = 0
-     while k < students.length-1-j
-       if students[k].stu_age > students[k+1].stu_age
-         temp = students[k]
-         students[k] = students[k+1]
-         students[k+1] = temp
-       end
-       k += 1
-     end
-     j += 1
-   end
-   return students
- end
-
-def orderByName (students)
-  j = 0
-  while j < students.length-1
-    k = 0
-    while k < students.length-1-j
-      if students[k].stu_name[0]> students[k+1].stu_name[0]
-        temp = students[k]
-        students[k] = students[k+1]
-        students[k+1] = temp
-      end
-      k += 1
-    end
-    j += 1
-  end
-  return students
-end
 
 def shoeInfo (students)
-  i = 0
   puts "id   name   gender  age "
-  while i < students.length
+  students.length.times do |i|
     print students[i].info
-    i += 1
   end
 end
 
-i = 1
-if File::exists?( "student.yml" )                                          #若student.yml存在，则将按照文件信息来创建学生对象
-  arr = IO.readlines("student.yml")
-  students = Array.new
-  while i < arr.length
-    str = arr[i].split
-    students[i-1] = Student.new(str[0].to_i, str[1], str[2].to_i, str[3].to_i)
-    i += 1
-  end
-
+if File::exists?( "student.yaml" )                                          #若student.yml存在，则将按照文件信息来创建学生对象
+  students = YAML.load_file("student.yaml")
 else                                        #用循环创建随机学生对象
   students = Array.new
-  while i <= 100
+  100.times do |i|
     s_name = newpass(6)
     s_name = s_name.capitalize
     s_age = rand(15..20)
     s_gender = 2031 - s_age
-    students[i-1] = Student.new(i, s_name, s_gender, s_age)
-    i += 1
+    students[i] = Student.new(i+1, s_name, s_gender, s_age)
   end
-  store_stu(students)                                      #存储学生信息
+  store_stu(students)
 end
+
 while 1
   puts "                      学生管理"
   puts "1.添加学生  2.删除学生  3.修改学生   4.查询学生  5.学生排序 0.退出程序"
@@ -138,52 +68,51 @@ while 1
   when 0
     exit(0)
   when 1
-    students.push( add_stu)
+
+    students.push( add_stu (students[students.length-1].stu_id+1))
     store_stu(students)
   when 2
-    i = 0
+    j = 0
     puts "请输入要删除学生的id"
     n = gets
-    while i < students.length
+    students.length.times do |i|
       if students[i].stu_id == n.to_i
         students.delete_at(i)
         break
       end
-      i += 1
+      j = i
     end
-    if i == students.length
+    if j == students.length-1
       puts "此学生不存在！"
     end
     store_stu(students)
 
   when 3
-    i = 0
     puts "请输入要修改学生的id"
     n = gets
-    stu = add_stu
-    while i < students.length
+    stu = add_stu(n.to_i)
+    students.length.times do |i|
       if students[i].stu_id == n.to_i
         students.delete_at(i)
         students[i] = stu
         break
       end
-      i += 1
     end
     store_stu(students)
 
   when 4
-    i = 0
+    j = 0
     puts "请输入要查询学生的id"
     n = gets
-    while i < students.length
+    students.length.times do |i|
       if students[i].stu_id == n.to_i
         puts "id   name   gender  age "
         puts students[i].info()
         break
       end
-      i += 1
+      j = i
     end
-    if i == students.length
+    if j == students.length-1
       puts "此学生不存在！"
     end
   when 5
@@ -191,13 +120,13 @@ while 1
     n = gets
     case n.to_i
     when 1
-      students = orderById(students)
+      students = students.sort_by {|u| u.stu_id}
       shoeInfo(students)
     when 2
-      students = orderByName(students)
+      students = students.sort_by {|u| u.stu_name}
       shoeInfo(students)
     when 3
-      students = orderByAge(students)
+      students = students.sort_by {|u| u.stu_age}
       shoeInfo(students)
     else
       puts "请输入正确的编号"
@@ -206,5 +135,4 @@ while 1
   else
     puts "请输入正确的编号"
   end
-
 end
