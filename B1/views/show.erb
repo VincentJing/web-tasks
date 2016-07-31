@@ -26,8 +26,7 @@
      <td><%= @mess[i].author%></td>
      <td><%= @mess[i].craete_at%></td>
      <td>
-       <form action="/delete/<%= @mess[i].id %>" method="POST">
-         <input type="hidden" name="_method" value="DELETE">
+       <form action="/delete/<%= @mess[i].id %>" method="post">
          <input type="submit" value="Delete" title="Delete">
        </form>
      </td>

@@ -14,14 +14,14 @@ end
 class Manager
 
   attr_accessor :message
-  
+
   def initialize (message)
     @message = message
   end
 
   def add (mes)              #增加留言，返回留言的id
     id = @message[@message.length-1].id
-    mes.id = id
+    mes.id = id + 1
     @message << mes
     mes.id
   end
@@ -43,14 +43,14 @@ class Manager
     @message
   end
 
-  def search (id)
-    j = 0
+  def searchId (id)
+    arr = Array.new
     @message.length.times do |i|
-      if @message[i].id == id
-        j = i
+      if @message[i].id == id.to_i
+        arr << @message[i]
       end
     end
-    @message[j]
+    arr
   end
 
   def search (author)
