@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>留言展示</title>
+</head>
+
+<body>
+  <form action="/" method="post" >
+    <br>筛选条件:
+    id:<input type="text" name="id" >
+    author:<input type="text" name="author">
+    <input type="submit" value="提交">
+  </form>
+
+  <table border="3">
+    <th>ID</th>
+    <th>Message</th>
+    <th>Author</th>
+    <th>Date</th>
+    <th>Action</th>
+
+    <% @mess.length.times do |i| %>
+    <tr>
+     <td><%= @mess[i].id%></td>
+     <td><p><%= @mess[i].message%></p></td>
+     <td><%= @mess[i].author%></td>
+     <td><%= @mess[i].craete_at%></td>
+     <td>
+       <form action="/delete/<%= @mess[i].id %>" method="POST">
+         <input type="hidden" name="_method" value="DELETE">
+         <input type="submit" value="Delete" title="Delete">
+       </form>
+     </td>
+   </tr>
+   <% end %>
+  </table>
+</body>
+
+</html>
