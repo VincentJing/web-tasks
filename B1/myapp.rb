@@ -34,18 +34,30 @@ post '/' do
 
 end
 
+enable :sessions
+
 get '/add' do
+  @message = ''
+  @author = ''
   erb :add
 end
 
 post '/add' do
-  if params[:message].to_s.length >= 10 && params[:author].to_s != nil
+  if params[:message].to_s.length >= 10 && params[:author].to_s != ''
     m = Message.new( 0, params[:message].to_s, params[:author].to_s, Time.new)
     mana.add( m )
     '添加留言成功！<br><a href = "/index">返回</a>'
   else
-    '添加留言失败！请确认留言至少包含十个字并且作者名不能为空！<br><a href = "/index">返回</a>'
+    session['message'] = params[:message].to_s
+    session['author'] = params[:author].to_s
+    '添加留言失败，请确认留言字数大于等于10且作者不为空！<br><a href = "/fail_to_add">重新编辑</a>'
   end
+end
+
+get '/fail_to_add' do
+  @message = session['message']
+  @author = session['author']
+  erb :add
 end
 
 get '/delete/:id' do

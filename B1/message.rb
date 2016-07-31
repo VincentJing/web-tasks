@@ -43,7 +43,7 @@ class Manager
     @message
   end
 
-  def searchId (id)
+  def search (id)
     arr = Array.new
     @message.length.times do |i|
       if @message[i].id == id.to_i
