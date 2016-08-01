@@ -62,9 +62,9 @@ get '/delete/:id' do
     end
   end
   if j == -1
-    '此id不存在！<br><a href = "/index">返回</a>'
+    '此id不存在！<br><a href = "/">返回</a>'
   else
-    '删除成功！<br><a href = "/index">返回</a>'
+    '删除成功！<br><a href = "/">返回</a>'
   end
 end
 
