@@ -17,23 +17,29 @@
     <th>Message</th>
     <th>Author</th>
     <th>Date</th>
-    <th>Action</th>
+    <th>Delete</th>
+    <th>Edit</th>
 
-    <% @mess.length.times do |i| %>
+    <% @mess.each do |i| %>
     <tr>
-     <td><%= @mess[i].id%></td>
-     <td><p><%= @mess[i].message%></p></td>
-     <td><%= @mess[i].author%></td>
-     <td><%= @mess[i].craete_at%></td>
+     <td><%= i.id%></td>
+     <td><p><%= i.message%></p></td>
+     <td><%= i.author%></td>
+     <td><%= i.craete_at%></td>
      <td>
-       <form action="/delete/<%= @mess[i].id %>" method="post">
-         <input type="submit" value="Delete" title="Delete">
+       <form action="/delete/<%= i.id %>" method="post">
+         <input type="submit" value="删除">
+       </form>
+     </td>
+     <td>
+       <form action="/edit/<%= i.id %>" method="post">
+         <input type="submit" value="编辑">
        </form>
      </td>
    </tr>
    <% end %>
   </table>
-  <a href="/index">返回首页</a>
+  <a href="/add">新建留言</a>
 </body>
 
 </html>

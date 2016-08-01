@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>新建留言</title>
+  <title>编辑留言</title>
 </head>
 <body>
   <center>
-    <form action="/add" method="post">
+    <form action="/edit" method="post">
       <br>
       姓名：<input type="text" name="author" placeholder="不能为空" maxlength="30" value='<%=@author%>'>
       <br>
       留言：<textarea  name="message" rows="10" cols="30" placeholder="留言应不少于10个字" ><%=@message%></textarea>
+      <input type="hidden" name="id" value='<%=@id%>'>
       <input type="submit" value="提交">
       <input type="reset"  value="重置">
     </form>
     <br>
-    <a href="/">返回首页</a>
+    <a href="/index">返回首页</a>
   </center>
 </body>
 </html>

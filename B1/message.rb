@@ -20,9 +20,13 @@ class Manager
   end
 
   def add (mes)              #增加留言，返回留言的id
-    id = @message[@message.length-1].id
-    mes.id = id + 1
-    @message << mes
+    if @message.length == 0
+      @message << mes
+    else
+      id = @message[@message.length-1].id
+      mes.id = id + 1
+      @message << mes
+    end
     mes.id
   end
 
@@ -39,11 +43,7 @@ class Manager
     count
   end
 
-  def search           #查询所有留言
-    @message
-  end
-
-  def search (id)
+  def searchId (id)
     arr = Array.new
     @message.length.times do |i|
       if @message[i].id == id.to_i
@@ -55,9 +55,9 @@ class Manager
 
   def search (author)
     arr = Array.new
-    @message.length.times do |i|
-      if @message[i].author == author
-        arr << @message[i]
+    @message.each do |i|
+      if i.author == author
+        arr << i
       end
     end
     arr
