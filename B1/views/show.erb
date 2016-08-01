@@ -37,7 +37,7 @@
            <td><%= i.id%></td>
            <td><p><%= i.message%></p></td>
            <td><%= i.author%></td>
-           <td><%= i.craete_at%></td>
+           <td><%= i.craete_at.strftime("%Y-%m-%d %H:%M:%S")%></td>
            <td>
              <form action="/delete/<%= i.id %>" method="post">
                <input type="submit" value="删除">
