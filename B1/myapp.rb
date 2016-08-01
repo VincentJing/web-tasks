@@ -1,8 +1,20 @@
 require 'sinatra'
 require File.expand_path('../message', __FILE__)
 
+def newpass( len )          #产生长度为len的随机字符串（小写）的函数
+  chars = ("a".."z").to_a
+  newpass = ""
+  1.upto(len) { |i| newpass << chars[rand(chars.size-1)] }
+  return newpass
+end
+
+
 mess = Array.new
-mess << Message.new(0, "很高兴见到你，那家差价按成绩按", "Vincent", Time.new )
+12.times do |i|
+  m = newpass(6).capitalize
+  mess << Message.new(i, newpass(12), m, Time.new )
+end
+
 mana = Manager.new(mess)
 
 get '/' do
@@ -118,5 +130,5 @@ get '/fail_to_edit' do
 end
 
 not_found do
-  'This is nowhere to be found'
+  '404'
 end
