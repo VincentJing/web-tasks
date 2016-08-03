@@ -17,24 +17,33 @@ end
 
 mana = Manager.new(mess)
 
-get '/' do                                             #主页  按照创建时间倒序输出留言
+get '/' do
+  id = params[:id].to_s
+  author = params[:author].to_s
   @mess = mana.message.sort_by { |e| e.craeted_at  }
   @mess = @mess.reverse
-  erb :show
+  if id == '' && author == ''
+    erb :show
+  elsif id != ''
+    @mess = mana.search_Id(id.to_i)
+    erb :show
+  else
+    @mess = mana.search_author(author)
+    erb :show
+  end                                           #主页  按照创建时间倒序输出留言
+
 end
 
 post '/' do
   i = params[:in].to_s
-  condition = params[:condition].to_s                            #处理针对Id和Author的查询，将结果输出
+  condition = params[:condition].to_s
   @mess = []
   if i == ''
     redirect to ('/')
   elsif condition == "author"
-    @mess = mana.search_author(i)
-    erb :show
+    redirect to ("/?author=#{i}")
   else
-    @mess = mana.search_Id(i.to_i)                 #ruby 好像不支持重载
-    erb :show
+    redirect to ("/?id=#{i}")
   end
 
 end
@@ -51,11 +60,13 @@ post '/add' do                                                   #对新建留�
   if params[:message].to_s.length >= 10 && params[:author].to_s != ''
     m = Message.new( 0, params[:message].to_s, params[:author].to_s)
     mana.add( m )
-    '<center>添加留言成功！<br><a href = "/">返回</a></center>'
+    '<center>添加留言成功！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/"></center>'
+
   else
     session['message'] = params[:message].to_s
     session['author'] = params[:author].to_s
-    '<center>添加留言失败，请确认留言字数大于等于10且作者不为空！<br><a href = "/fail_to_add">重新编辑</a></center>'
+    '<center>添加留言失败，请确认留言字数大于等于10且作者不为空！<br>两秒后自动返回编辑页面，请重新编辑<meta http-equiv="refresh" content="2;url=/fail_to_add">
+    </center>'
   end
 end
 
@@ -74,9 +85,9 @@ get '/delete/:id' do                          #按照Id删除留言
     end
   end
   if j == -1
-    '<center>此id不存在！<br><a href = "/">返回</a></center>'
+    '<center>此id不存在！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/"</center>'
   else
-    '<center>删除成功！<br><a href = "/">返回</a></center>'
+    '<center>删除成功！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/"</center>'
   end
 end
 
@@ -112,12 +123,12 @@ post '/edit' do                               #对再次编辑的内容进行判
         i.craeted_at = Time.new
       end
     end
-  '<center>编辑成功！<br><a href = "/">返回</a></center>'
+  '<center>编辑成功！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/">'
   else
     session['message'] = params[:message].to_s
     session['author'] = params[:author].to_s
     session['id'] = params[:id]
-    '<center>添加留言失败，请确认留言字数大于等于10且作者不为空！<br><a href = "/fail_to_edit">重新编辑</a></center>'
+    '<center>添加留言失败，请确认留言字数大于等于10且作者不为空！<br>两秒后自动返回请重新编辑<meta http-equiv="refresh" content="2;url=/fail_to_edit"></center>'
   end
 
 end
@@ -130,5 +141,5 @@ get '/fail_to_edit' do                       #判定不通过时重新编辑
 end
 
 not_found do              #对其他错误访问请求的响应
-  '<center>404 您访问的页面不存在！<br><a href = "/">访问主页</a></center>'
+  '<center>404 您访问的页面不存在！<br>两秒后自动返回主页<meta http-equiv="refresh" content="2;url=/"></center>'
 end
