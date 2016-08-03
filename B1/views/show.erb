@@ -25,10 +25,15 @@
 
     <h2>留言板</h2>
     <script language="javascript">
-    function delcfm() {
-        if (!confirm("确认要删除？")) {
-            window.event.returnValue = false;
-        }
+    function del_sure(id){
+      var con=confirm("确定要删除?");
+      if (con==true){
+        self.location='/delete/'+id;
+
+      }
+      else {
+        self.location='/';
+      }
     }
     </script>
     <div class="table-responsive">
@@ -51,9 +56,7 @@
            <td><%= i.author%></td>
            <td><%= i.craeted_at.strftime("%Y-%m-%d %H:%M:%S")%></td>
            <td>
-             <form action="/delete/<%= i.id %>" method="post">
-               <input type="submit" value="删除" onclick="delcfm()">
-             </form>
+             <input type="button" name="name" value = "删除" onclick="del_sure(<%= i.id %>)" >
            </td>
            <td>
              <form action="/edit/<%= i.id %>" method="post">
