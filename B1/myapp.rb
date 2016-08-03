@@ -9,7 +9,7 @@ def newpass( len )          #产生长度为len的随机字符串（小写）的
 end
 
 
-mess = Array.new
+mess = []
 12.times do |i|                                          #随机产生12个留言类对象
   m = newpass(6).capitalize
   mess << Message.new(i, newpass(12), m)
@@ -18,33 +18,18 @@ end
 mana = Manager.new(mess)
 
 get '/' do
-  id = params[:id].to_s
-  author = params[:author].to_s
-  @mess = mana.message.sort_by { |e| e.craeted_at  }
-  @mess = @mess.reverse
-  if id == '' && author == ''
+  condition = params[:condition].to_s
+  info = params[:info].to_s
+  @mess = mana.message.sort_by { |e| e.created_at  }
+  if info == ''
     erb :show
-  elsif id != ''
-    @mess = mana.search_Id(id.to_i)
+  elsif condition == "id"
+    @mess = mana.search_id(info.to_i)
     erb :show
   else
-    @mess = mana.search_author(author)
+    @mess = mana.search_author(info)
     erb :show
   end                                           #主页  按照创建时间倒序输出留言
-
-end
-
-post '/' do
-  i = params[:in].to_s
-  condition = params[:condition].to_s
-  @mess = []
-  if i == ''
-    redirect to ('/')
-  elsif condition == "author"
-    redirect to ("/?author=#{i}")
-  else
-    redirect to ("/?id=#{i}")
-  end
 
 end
 
@@ -91,14 +76,6 @@ get '/delete/:id' do                          #按照Id删除留言
   end
 end
 
-post '/delete/:id' do                    #对主页删除按钮的响应
-  mana.message.each do |i|
-    if i.id == params[:id].to_i
-      mana.message.delete(i)
-    end
-  end
-  redirect to ('/')
-end
 
 post '/edit/:id' do                    #对主页编辑按钮的响应    对留言内容进行再次编辑
   @message = ''

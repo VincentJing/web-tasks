@@ -1,12 +1,12 @@
 class Message         #留言类
 
-  attr_accessor :id, :message, :author, :craeted_at
+  attr_accessor :id, :message, :author, :created_at
 
   def initialize(id, message, author)
      @id = id
      @message = message
      @author = author
-     @craeted_at = Time.new
+     @created_at = Time.new
   end
 
 end
@@ -30,20 +30,7 @@ class Manager                   #留言管理类
     mes.id
   end
 
-  def delete (id)     #删除id数组的留言，返回成功删除的留言条数
-    count = 0
-    id.each do |i|
-      @message.each do |j|
-        if j.id == i
-          @message.delete(j)
-          count += 1
-        end
-      end
-    end
-    count
-  end
-
-  def search_Id (id)
+  def search_id (id)
     arr = []
     @message.each do |i|
       if i.id == id.to_i
