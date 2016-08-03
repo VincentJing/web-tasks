@@ -13,8 +13,13 @@
   <div class="container">
     <form action="/" method="post" >
       <br><h4>筛选条件:</h4>
-      id:<input type="text" name="id" >
-      author:<input type="text" name="author">
+      <div class="form-group">
+        <select class="form-control" name="condition">
+          <option value="id">搜索ID</option>
+          <option value="author">搜索Author</option>
+        </select>
+      </div>
+      <input type="text" name="in" >
       <input type="submit" value="提交">
     </form>
 
@@ -37,7 +42,7 @@
            <td><%= i.id%></td>
            <td><p><%= i.message%></p></td>
            <td><%= i.author%></td>
-           <td><%= i.craete_at.strftime("%Y-%m-%d %H:%M:%S")%></td>
+           <td><%= i.craeted_at.strftime("%Y-%m-%d %H:%M:%S")%></td>
            <td>
              <form action="/delete/<%= i.id %>" method="post">
                <input type="submit" value="删除">

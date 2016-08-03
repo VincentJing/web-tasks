@@ -12,28 +12,28 @@ end
 mess = Array.new
 12.times do |i|                                          #随机产生12个留言类对象
   m = newpass(6).capitalize
-  mess << Message.new(i, newpass(12), m, Time.new )
+  mess << Message.new(i, newpass(12), m)
 end
 
 mana = Manager.new(mess)
 
 get '/' do                                             #主页  按照创建时间倒序输出留言
-  @mess = mana.message.sort_by { |e| e.craete_at  }
+  @mess = mana.message.sort_by { |e| e.craeted_at  }
   @mess = @mess.reverse
   erb :show
 end
 
 post '/' do
-  id = params[:id].to_s                             #处理针对Id和Author的查询，将结果输出
-  author = params[:author].to_s
-  @mess = Array.new
-  if id == '' && author == ''
+  i = params[:in].to_s
+  condition = params[:condition].to_s                            #处理针对Id和Author的查询，将结果输出
+  @mess = []
+  if i == ''
     redirect to ('/')
-  elsif id == '' && author != ''
-    @mess = mana.search(author)
+  elsif condition == "author"
+    @mess = mana.search_author(i)
     erb :show
   else
-    @mess = mana.searchId(id.to_i)                 #ruby 好像不支持重载
+    @mess = mana.search_Id(i.to_i)                 #ruby 好像不支持重载
     erb :show
   end
 
@@ -49,7 +49,7 @@ end
 
 post '/add' do                                                   #对新建留言的内容进行判定
   if params[:message].to_s.length >= 10 && params[:author].to_s != ''
-    m = Message.new( 0, params[:message].to_s, params[:author].to_s, Time.new)
+    m = Message.new( 0, params[:message].to_s, params[:author].to_s)
     mana.add( m )
     '<center>添加留言成功！<br><a href = "/">返回</a></center>'
   else
@@ -109,7 +109,7 @@ post '/edit' do                               #对再次编辑的内容进行判
       if i.id == params[:id].to_i
         i.author = params[:author].to_s
         i.message = params[:message].to_s
-        i.craete_at = Time.new
+        i.craeted_at = Time.new
       end
     end
   '<center>编辑成功！<br><a href = "/">返回</a></center>'
