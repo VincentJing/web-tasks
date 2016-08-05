@@ -50,8 +50,21 @@ post '/signup' do                                       #注册判断
 end
 
 get '/' do
-  @mess = Message.find_by_sql ("select * from messages")
-  erb :show
+  condition = params[:condition].to_s
+  info = params[:info].to_s
+  @mess = []
+  if info == ''
+    @mess = Message.find_by_sql ("select * from messages")
+    erb :show
+  elsif condition == "id"
+    @mess << Message.find(info.to_i)
+    erb :show
+  else
+    a = User.find_by_username(info.to_s)
+    @mess = a.messages
+    erb :show
+  end
+
 end
 
 get '/add' do                        #新建留言
@@ -98,8 +111,7 @@ post '/edit' do                               #对再次编辑的内容进行判
 
 end
 
-get '/a/:id' do                               #测试表与表之间的关联
-  user = User.find(params[:id])
-  a = user.messages
-  "#{a.length}"
+get '/a' do                               #测试表与表之间的关联
+  user = User.find_by_username("aa")
+  "#{user.id}"
 end

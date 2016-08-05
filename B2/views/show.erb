@@ -43,17 +43,23 @@
             <th>ID</th>
             <th>Message</th>
             <th>AuthorId</th>
+            <th>Author</th>
             <th>Date</th>
             <th>Delete</th>
             <th>Edit</th>
           </tr>
         </thead>
-        <% @mess.reverse_each do |i| %>
+        <% @mess.each do |i| %>
         <tbody>
           <tr>
            <td><%= i.id%></td>
-           <td><p><%= i.content%></p></td>
+           <td><%= i.content%></td>
            <td><%= i.user_id%></td>
+           <%
+             user = User.find(i.user_id)
+             author = user.username
+           %>
+           <td><%= author%></td>
            <td><%= i.created_at.strftime("%Y-%m-%d %H:%M:%S")%></td>
            <td>
              <input type="button" name="name" value = "删除" onclick="del_sure(<%= i.id %>)" >
