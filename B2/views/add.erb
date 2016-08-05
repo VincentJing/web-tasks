@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>新建留言</title>
+  <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <center>
+    <form action="/add" method="post" role="form" class="form-horizontal">
+      <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">留言</label>
+        <div class="col-sm-10">
+          <textarea  name="message" rows="10" cols="30" placeholder="留言应不少于10个字" class="form-control" ></textarea>
+        </div>
+      </div>
+
+      <input type="submit" value="提交" >
+      <input type="reset"  value="重置" >
+    </form>
+    <br>
+    <a href="/">返回首页</a>
+  </center>
+</body>
+</html>
