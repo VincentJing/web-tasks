@@ -3,7 +3,7 @@
 <head>
   <title>留言展示</title>
   <meta charset="utf-8">
-    <title>留言板</title>
+    <title>我的留言</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 包含 bootstrap 样式表 -->
     <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -11,19 +11,7 @@
 
 <body>
   <div class="container">
-    <form action="/" method="get" >
-      <br><h4>筛选条件:</h4>
-      <div class="form-group">
-        <select class="form-control" name="condition">
-          <option value="id">搜索ID</option>
-          <option value="username">搜索作者</option>
-        </select>
-      </div>
-      <input type="text" name="info" >
-      <input type="submit" value="提交">
-    </form>
-  <div class="container">
-    <h2>留言板</h2>
+    <h2>我的留言</h2>
     <script language="javascript">
     function del_sure(id){
       var con=confirm("确定要删除?");
@@ -42,8 +30,6 @@
           <tr>
             <th>ID</th>
             <th>Message</th>
-            <th>AuthorId</th>
-            <th>Author</th>
             <th>Date</th>
             <th>Delete</th>
             <th>Edit</th>
@@ -54,12 +40,6 @@
           <tr>
            <td><%= i.id%></td>
            <td><%= i.content%></td>
-           <td><%= i.user_id%></td>
-           <%
-             user = User.find(i.user_id)
-             author = user.username
-           %>
-           <td><%= author%></td>
            <td><%= i.created_at.strftime("%Y-%m-%d %H:%M:%S")%></td>
            <td>
              <input type="button" name="name" value = "删除" onclick="del_sure(<%= i.id %>)" >
@@ -76,7 +56,6 @@
     </div>
     <a href="/add" class="btn btn-primary" >新建留言</a>
     <a href="/exit" class="btn btn-primary" >退出登陆</a>
-    <a href="/myaccount" class="btn btn-primary" >我的账户</a>
   </div>
 
 </body>
