@@ -8,19 +8,45 @@
 </head>
 <body>
   <center>
-    <form action="/add" method="post" role="form" class="form-horizontal">
-      <div class="form-group">
-        <label for="name" class="col-sm-2 control-label">留言</label>
-        <div class="col-sm-10">
-          <textarea  name="message" rows="10" cols="30" placeholder="留言应不少于10个字" class="form-control" ></textarea>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">留言板</a>
+     </div>
+     <div>
+        <ul class="nav navbar-nav">
+           <li class="active"><a href="/add">新建留言</a></li>
+           <li class="active"><a href="/myaccount">我的账户</a></li>
+        </ul>
+        <div>
+          <form action="/" method="get" class="navbar-form navbar-right" role="search" >
+            <div class="form-group">
+              <select name="condition" class="selectpicker" data-style="btn-info">
+                <option value="id">搜索ID</option>
+                <option value="username">搜索作者</option>
+              </select>
+            </div>
+            <input class="form-control" type="text" name="info" >
+            <input class="form-control" type="submit" value="提交">
+          </form>
         </div>
-      </div>
+     </div>
+   </nav>
+   <div class="container">
+     <form action="/add" method="post" role="form" class="form-horizontal">
+       <div class="form-group">
+         <label for="name" class="col-sm-2 control-label">留言</label>
+         <div class="col-sm-10">
+           <textarea  name="message" rows="10" cols="25" placeholder="留言应不少于10个字" class="form-control" ></textarea>
+         </div>
+       </div>
 
-      <input type="submit" value="提交" >
-      <input type="reset"  value="重置" >
-    </form>
-    <br>
-    <a href="/">返回首页</a>
+       <input type="submit" value="提交" >
+       <input type="reset"  value="重置" >
+     </form>
+     <br>
+     <a href="/">返回首页</a>
+   </div>
+
   </center>
 </body>
 </html>
