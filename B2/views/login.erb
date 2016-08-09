@@ -2,14 +2,30 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>登陆界面</title>
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 包含 bootstrap 样式表 -->
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+    <style media="screen" type="text/css">
+      .form-signin{
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+      }
+      input{
+        margin-bottom: 3px;
+      }
+    </style>
   </head>
+
   <body>
-    <form action='/login' method="post">
-      <input type="text"  name = "username" >
-      <input type="password"  name = "password" >
-      <a href="/signup">signup</a>
-      <input type="submit" name="name" value="login">
-    </form>
+    <div class="container">
+      <form class="form-signin" action="/login" method="post" role="form">
+        username:<input class="form-control" type="text" name="username" required="autofocus">
+        <br>password:<input class="form-control" type="password" name="password" required="">
+        <br><button type="submit" name="name" value="登录" class="btn btn-primary">登录</button>
+        <a href="/signup" class="btn btn-primary">注册</a>
+      </form>
+    </div>
   </body>
 </html>
