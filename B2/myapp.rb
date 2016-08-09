@@ -2,8 +2,12 @@ require 'sinatra'
 require 'active_record'
 require 'digest/sha1'
 
-ActiveRecord::Base.establish_connection( :adapter => "mysql2", :host => "127.0.0.1",
-:username => "root", :password => "123456", :database => "MESSAGE")    #连接数据库
+ActiveRecord::Base.establish_connection(
+  :adapter => "mysql2",
+  :host => "127.0.0.1",
+  :username => "root",
+  :password => "123456",
+  :database => "MESSAGE")    #连接数据库
 
 enable :sessions
 
@@ -13,6 +17,7 @@ end
 
 class Message < ActiveRecord::Base
   belongs_to :users
+  validates_presence_of :content
 end
 
 get '/login' do        #渲染登陆界面
@@ -30,7 +35,7 @@ post '/login' do                                       #登陆判断
     session[:status] = 1
     redirect to ('/')
   else
-    redirect to ('/login')
+    '<center>用户名或密码错误！请重新登陆<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
   end
 end
 
@@ -41,11 +46,15 @@ end
 post '/signup' do                                       #注册判断
   a = User.find_by_sql("select * from users where username = '#{params[:username]}'")
   if a.length == 0
-    user = User.new
-    user.username = params[:username]
-    user.password = Digest::SHA1.hexdigest(params[:password])
-    user.save
-    '<center>注册成功！<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
+    if params[:password].to_s.length >= 8
+      user = User.new
+      user.username = params[:username]
+      user.password = Digest::SHA1.hexdigest(params[:password])
+      user.save
+      '<center>注册成功！<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
+    else
+      '<center>密码太短！<br>两秒后自动返回注册界面请重新注册<meta http-equiv="refresh" content="2;url=/signup"></center>'
+    end
   else
     '<center>用户名已存在！<br>两秒后自动返回注册界面请重新注册<meta http-equiv="refresh" content="2;url=/signup"></center>'
   end
@@ -80,8 +89,6 @@ get '/' do
   else
     '<center>您当前未登录！<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
   end
-
-
 end
 
 get '/add' do                        #新建留言
@@ -141,11 +148,38 @@ post '/edit' do                               #对再次编辑的内容进行判
 end
 
 get '/myaccount' do
-  a = User.find(session[:id])
-  @mess = a.messages
-  @mess = @mess.sort_by { |e| e.created_at  }
-  erb :myaccount
+  check = session[:status].to_i
+  if check == 1
+    a = User.find(session[:id])
+    @mess = a.messages
+    @mess = @mess.sort_by { |e| e.created_at  }
+    erb :myaccount
+  else
+    '<center>您当前未登录！<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
+  end
 
+end
+
+get '/change_password' do
+  check = session[:status].to_i
+  if check == 1
+    erb :change_password
+  else
+    '<center>您当前未登录！<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
+  end
+end
+
+post '/change_password' do
+  oldpassword = Digest::SHA1.hexdigest(params[:oldpassword].to_s)
+  a = User.find(session[:id])
+  if a.password == oldpassword
+    a.password = Digest::SHA1.hexdigest(params[:newpassword])
+    a.save
+    session[:status] = 0
+    '<center>修改密码成功！请重新登陆<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
+  else
+    '<center>原密码不正确！请重新输入<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/change_password"></center>'
+  end
 end
 
 get '/exit' do

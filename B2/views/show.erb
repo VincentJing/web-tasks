@@ -45,8 +45,6 @@
             <th>AuthorId</th>
             <th>Author</th>
             <th>Date</th>
-            <th>Delete</th>
-            <th>Edit</th>
           </tr>
         </thead>
         <% @mess.reverse_each do |i| %>
@@ -61,14 +59,6 @@
            %>
            <td><%= author%></td>
            <td><%= i.created_at.strftime("%Y-%m-%d %H:%M:%S")%></td>
-           <td>
-             <input type="button" name="name" value = "删除" onclick="del_sure(<%= i.id %>)" >
-           </td>
-           <td>
-             <form action="/edit/<%= i.id %>" method="post">
-               <input type="submit" value="编辑">
-             </form>
-           </td>
          </tr>
         </tbody>
        <% end %>
