@@ -3,11 +3,12 @@ require 'active_record'
 require 'digest/sha1'
 
 ActiveRecord::Base.establish_connection(
-  :adapter => "mysql2",
-  :host => "127.0.0.1",
-  :username => "root",
-  :password => "123456",
-  :database => "MESSAGE")    #连接数据库
+  adapter: 'mysql2',
+  host: '127.0.0.1',
+  username: 'root',
+  password: '123456',
+  database: 'MESSAGE'
+) # 连接数据库
 
 enable :sessions
 
@@ -20,18 +21,18 @@ class Message < ActiveRecord::Base
   validates_presence_of :content
 end
 
-get '/login' do        #渲染登陆界面
+get '/login' do # 渲染登陆界面
   erb :login
 end
 
-post '/login' do                                       #登陆判断
+post '/login' do # 登陆判断
   username = params[:username]
   password = Digest::SHA1.hexdigest(params[:password])
   a = User.find_by_sql("select * from users where username = '#{username}'")
   if a.length == 1 && a[0].password == password.to_s
     session[:id] = a[0].id
     session[:status] = 1
-    redirect to ('/')
+    redirect to '/'
   else
     '<center>用户名或密码错误！请重新登陆<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
   end
@@ -41,9 +42,9 @@ get '/signup' do
   erb :signin
 end
 
-post '/signup' do                                       #注册判断
+post '/signup' do # 注册判断
   a = User.find_by_sql("select * from users where username = '#{params[:username]}'")
-  if a.length == 0
+  if a.length.zero?
     if params[:password].to_s.length >= 4
       user = User.new
       user.username = params[:username]
@@ -65,21 +66,19 @@ get '/' do
     info = params[:info].to_s
     @mess = []
     if info == ''
-      @mess = Message.find_by_sql ("select * from messages")
-    elsif condition == "id"
+      @mess = Message.find_by_sql 'select * from messages'
+    elsif condition == 'id'
       @mess = Message.find_by_sql("select * from messages where id = '#{info.to_i}'")
     else
-      a = User.find_by_sql("select * from users where username = '#{info.to_s}'")
-      if a.length != 0
-        @mess = a[0].messages
-      end
+      a = User.find_by_sql("select * from users where username = '#{info}'")
+      @mess = a[0].messages if a.length.nonzero?
     end
     if @mess.length > 1
-      @mess = @mess.sort_by { |e| e.created_at  }
+      @mess = @mess.sort_by(&:created_at)
       erb :show
     elsif @mess.length == 1
       erb :show
-    elsif @mess.length == 0
+    elsif @mess.length.zero?
       '<center>符合条件的留言不存在！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/"></center>'
     end
   else
@@ -87,7 +86,7 @@ get '/' do
   end
 end
 
-get '/add' do                        #新建留言
+get '/add' do # 新建留言
   check = session[:status].to_i
   if check == 1
     erb :add
@@ -96,7 +95,7 @@ get '/add' do                        #新建留言
   end
 end
 
-post '/add' do                                                   #对新建留言的内容进行判定
+post '/add' do # 对新建留言的内容进行判定
   if params[:message].to_s.length >= 10
     message = Message.new
     message.content = params[:message].to_s
@@ -109,7 +108,7 @@ post '/add' do                                                   #对新建留�
   end
 end
 
-get '/delete/:id' do                          #按照Id删除留言
+get '/delete/:id' do # 按照Id删除留言
   check = session[:status].to_i
   if check == 1
     a = Message.find_by_sql("select * from messages where id = '#{params[:id]}'")
@@ -128,12 +127,12 @@ get '/delete/:id' do                          #按照Id删除留言
   end
 end
 
-post '/edit/:id' do                    #对主页编辑按钮的响应    对留言内容进行再次编辑
+post '/edit/:id' do # 对主页编辑按钮的响应    对留言内容进行再次编辑
   @message = Message.find(params[:id])
   erb :edit
 end
 
-post '/edit' do                               #对再次编辑的内容进行判定
+post '/edit' do # 对再次编辑的内容进行判定
   if params[:message].to_s.length >= 10
     a = Message.find(params[:id])
     a.content = params[:message]
@@ -150,7 +149,7 @@ get '/myaccount' do
   if check == 1
     a = User.find(session[:id])
     @mess = a.messages
-    @mess = @mess.sort_by { |e| e.created_at  }
+    @mess = @mess.sort_by(&:created_at)
     erb :myaccount
   else
     '<center>您当前未登录！<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
@@ -181,9 +180,9 @@ end
 
 get '/exit' do
   session[:status] = 0
-  redirect to ('/login')
+  redirect to '/login'
 end
 
-not_found do              #对其他错误访问请求的响应
+not_found do # 对其他错误访问请求的响应
   '<center>404 您访问的页面不存在！<br>两秒后自动返回主页<meta http-equiv="refresh" content="2;url=/"></center>'
 end
