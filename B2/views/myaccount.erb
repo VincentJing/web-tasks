@@ -48,6 +48,13 @@
       </div>
     </nav>
   <div class="container">
+    <h2>我的资料:</h2>
+    <h4>Id:<%=session[:id]%>    </h4>
+    <%
+      user = User.find(session[:id])
+      author = user.username
+    %>
+    <h4>Username:<%=author%></h4>
     <h2>我的留言</h2>
     <script language="javascript">
     function del_sure(id){
