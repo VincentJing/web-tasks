@@ -24,8 +24,6 @@ get '/login' do        #渲染登陆界面
   erb :login
 end
 
-
-
 post '/login' do                                       #登陆判断
   username = params[:username]
   password = Digest::SHA1.hexdigest(params[:password])
@@ -58,7 +56,6 @@ post '/signup' do                                       #注册判断
   else
     '<center>用户名已存在！<br>两秒后自动返回注册界面请重新注册<meta http-equiv="refresh" content="2;url=/signup"></center>'
   end
-
 end
 
 get '/' do
@@ -97,7 +94,6 @@ get '/add' do                        #新建留言
   else
     '<center>您当前未登录！<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
   end
-
 end
 
 post '/add' do                                                   #对新建留言的内容进行判定
@@ -116,16 +112,20 @@ end
 get '/delete/:id' do                          #按照Id删除留言
   check = session[:status].to_i
   if check == 1
-    if Message.find(params[:id])
-      Message.delete(params[:id].to_i)
-      '<center>删除成功！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/myaccount"</center>'
+    a = Message.find_by_sql("select * from messages where id = '#{params[:id]}'")
+    if a.length == 1
+      if a[0].user_id == session[:id]
+        Message.delete(params[:id].to_i)
+        '<center>删除成功！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/myaccount"</center>'
+      else
+        '<center>对不起，您不是该留言的作者，您没有权限删除！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/myaccount"</center>'
+      end
     else
       '<center>此id不存在！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/myaccount"</center>'
     end
   else
     '<center>您当前未登录！<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
   end
-
 end
 
 post '/edit/:id' do                    #对主页编辑按钮的响应    对留言内容进行再次编辑
@@ -143,7 +143,6 @@ post '/edit' do                               #对再次编辑的内容进行判
   else
     '<center>编辑留言失败，请确认留言字数大于等于10！<br><a href="#" onClick=" javascript :history.back(-1);">重新编辑</a></center>'
   end
-
 end
 
 get '/myaccount' do
@@ -156,7 +155,6 @@ get '/myaccount' do
   else
     '<center>您当前未登录！<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
   end
-
 end
 
 get '/change_password' do
