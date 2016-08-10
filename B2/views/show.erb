@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>留言展示</title>
-  <meta charset="utf-8">
-    <title>留言板</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 包含 bootstrap 样式表 -->
-    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+   <title>首页</title>
+   <meta charset="utf-8">
+   <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+   <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+   <style media="screen">
+     .navbar-header .active
+       {
+         color:#FFFFFF;//当处于导航链接到的页面时该导航菜单颜色变成白色
+       }
+   </style>
 </head>
-
 <body>
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">留言板</a>
+
+<nav class="navbar navbar-inverse" role="navigation">
+   <div class="navbar-header">
+      <a class="navbar-brand" href="/">首页</a>
    </div>
    <div>
       <ul class="nav navbar-nav">
-         <li class="active"><a href="/add">新建留言</a></li>
-         <li class="active"><a href="/myaccount">我的账户</a></li>
+         <li class=""><a href="/add">新建留言</a></li>
+         <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+               我的账户
+               <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+               <li><a href="/myaccount">查看我的账户</a></li>
+               <li><a href="/change_password">修改密码</a></li>
+               <li><a href="/exit">退出登陆</a></li>
+            </ul>
+         </li>
       </ul>
       <div>
         <form action="/" method="get" class="navbar-form navbar-right" role="search" >
@@ -27,12 +43,12 @@
               <option value="username">搜索作者</option>
             </select>
           </div>
-          <input class="form-control" type="text" name="info" >
+          <input class="form-control" type="text" name="info" placeholder="为空时默认搜索全部">
           <input class="form-control" type="submit" value="提交">
         </form>
       </div>
-   </div>
- </nav>
+    </div>
+  </nav>
   <div class="container">
     <h2>留言板</h2>
     <script language="javascript">
@@ -75,11 +91,6 @@
        <% end %>
       </table>
     </div>
-    <a href="/add" class="btn btn-primary" >新建留言</a>
-    <a href="/exit" class="btn btn-primary" >退出登陆</a>
-    <a href="/myaccount" class="btn btn-primary" >我的账户</a>
   </div>
-
 </body>
-
 </html>

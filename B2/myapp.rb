@@ -46,7 +46,7 @@ end
 post '/signup' do                                       #注册判断
   a = User.find_by_sql("select * from users where username = '#{params[:username]}'")
   if a.length == 0
-    if params[:password].to_s.length >= 8
+    if params[:password].to_s.length >= 4
       user = User.new
       user.username = params[:username]
       user.password = Digest::SHA1.hexdigest(params[:password])
@@ -76,7 +76,6 @@ get '/' do
       if a.length != 0
         @mess = a[0].messages
       end
-
     end
     if @mess.length > 1
       @mess = @mess.sort_by { |e| e.created_at  }
@@ -119,9 +118,9 @@ get '/delete/:id' do                          #按照Id删除留言
   if check == 1
     if Message.find(params[:id])
       Message.delete(params[:id].to_i)
-      '<center>删除成功！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/"</center>'
+      '<center>删除成功！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/myaccount"</center>'
     else
-      '<center>此id不存在！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/"</center>'
+      '<center>此id不存在！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/myaccount"</center>'
     end
   else
     '<center>您当前未登录！<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
