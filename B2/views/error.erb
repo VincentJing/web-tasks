@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>错误信息展示</title>
+        <meta charset="utf-8">
+        <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+        <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    </head>
+    <body class="text-center">
+        <br><br><br><br><br><br><br>
+        <div class="container">
+            <div class="alert alert-danger">
+                <div class="text-warning">
+                    <%= @login_errors%>
+                </div>
+
+                <div class="text-warning">
+                    <%if @signup_errors != nil
+                  @signup_errors.each do |i|
+                %>
+                    <%= i%>
+                    <br>
+                    <% end %>
+                    <% end %>
+                </div>
+
+                <div class="text-warning">
+                    <%= @delete_errors%>
+                </div>
+
+                <div class="text-warning">
+                    <%if @change_password_errors != nil
+                     @change_password_errors.each do |i|
+                %>
+                    <%= i%>
+                    <% end %>
+                    <% end %>
+                </div>
+                <div class="text-warning">
+                    <%= @search_errors %>
+                    <%= @add_errors %>
+                    <%= @edit_errors %>
+                </div>
+                <br>
+            </div>
+
+            <div class="alert alert-info">
+                两秒后自动返回
+            </div>
+            <script language="javascript">
+                setTimeout("window.history.go(-1)", 2000)
+            </script>
+        </div>
+    </body>
+</html>

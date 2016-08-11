@@ -1,24 +1,12 @@
 require 'sinatra'
 require 'active_record'
 require 'digest/sha1'
+require './model'
 
-ActiveRecord::Base.establish_connection(
-  adapter: 'mysql2',
-  host: '127.0.0.1',
-  username: 'root',
-  password: '123456',
-  database: 'MESSAGE'
-) # 连接数据库
+use Rack::Session::Pool, expire_after: 3600
 
-enable :sessions
-
-class User < ActiveRecord::Base
-  has_many :messages
-end
-
-class Message < ActiveRecord::Base
-  belongs_to :users
-  validates_presence_of :content
+before /^(?!\/(login|signup))/ do # 判断用户是否登陆未登录直接跳转到登录界面
+  redirect to('/login') if session[:id].nil?
 end
 
 get '/login' do # 渲染登陆界面
@@ -28,13 +16,18 @@ end
 post '/login' do # 登陆判断
   username = params[:username]
   password = Digest::SHA1.hexdigest(params[:password])
-  a = User.find_by_sql("select * from users where username = '#{username}'")
-  if a.length == 1 && a[0].password == password.to_s
-    session[:id] = a[0].id
-    session[:status] = 1
-    redirect to '/'
+  a = User.find_by(username: username)
+  if a.nil?
+    @login_errors = '用户名不存在！'
+    erb :error
   else
-    '<center>用户名或密码错误！请重新登陆<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
+    if a.password == password.to_s
+      session[:id] = a.id
+      redirect to '/'
+    else
+      @login_errors = '密码错误！'
+      erb :error
+    end
   end
 end
 
@@ -43,87 +36,73 @@ get '/signup' do
 end
 
 post '/signup' do # 注册判断
-  a = User.find_by_sql("select * from users where username = '#{params[:username]}'")
-  if a.length.zero?
-    if params[:password].to_s.length >= 4
-      user = User.new
-      user.username = params[:username]
+  @signup_errors = []
+  if params[:password] == params[:check_password]
+    user = User.create(username: params[:username], password: params[:password])
+    if user.errors.any?
+      @signup_errors = user.errors.full_messages
+      erb :error
+    else
       user.password = Digest::SHA1.hexdigest(params[:password])
       user.save
-      '<center>注册成功！<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
-    else
-      '<center>密码太短！<br>两秒后自动返回注册界面请重新注册<meta http-equiv="refresh" content="2;url=/signup"></center>'
+      @signup_success = '注册成功!请登录,两秒后返回登录界面<meta http-equiv="refresh" content="2;url=/">'
+      erb :success
     end
   else
-    '<center>用户名已存在！<br>两秒后自动返回注册界面请重新注册<meta http-equiv="refresh" content="2;url=/signup"></center>'
+    @signup_errors[0] = '两次输入密码不一致，请重新注册'
+    erb :error
   end
 end
 
 get '/' do
-  check = session[:status].to_i
-  if check == 1
-    condition = params[:condition].to_s
-    info = params[:info].to_s
-    @mess = []
-    if info == ''
-      @mess = Message.find_by_sql 'select * from messages'
-    elsif condition == 'id'
-      @mess = Message.find_by_sql("select * from messages where id = '#{info.to_i}'")
-    else
-      a = User.find_by_sql("select * from users where username = '#{info}'")
-      @mess = a[0].messages if a.length.nonzero?
-    end
-    if @mess.length > 1
-      @mess = @mess.sort_by(&:created_at)
-      erb :show
-    elsif @mess.length == 1
-      erb :show
-    elsif @mess.length.zero?
-      '<center>符合条件的留言不存在！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/"></center>'
-    end
+  condition = params[:condition].to_s
+  info = params[:info].to_s
+  @mess = []
+  if info == ''
+    @mess = Message.all
+  elsif condition == 'id'
+    @mess << Message.find_by(id: info.to_i)
   else
-    '<center>您当前未登录！<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
+    a = User.find_by(username: info.to_s)
+    @mess = a.messages unless a.nil?
+  end
+  if @mess.length > 1
+    @mess = @mess.sort_by(&:created_at)
+    erb :show
+  elsif @mess.length == 1 && !@mess[0].nil?
+    erb :show
+  else
+    @search_errors = '符合条件的留言不存在！'
+    erb :error
   end
 end
 
 get '/add' do # 新建留言
-  check = session[:status].to_i
-  if check == 1
-    erb :add
-  else
-    '<center>您当前未登录！<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
-  end
+  erb :add
 end
 
 post '/add' do # 对新建留言的内容进行判定
-  if params[:message].to_s.length >= 10
-    message = Message.new
-    message.content = params[:message].to_s
-    message.user_id = session[:id].to_i
-    message.created_at = Time.new
-    message.save
-    '<center>添加留言成功！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/"></center>'
+  message = Message.create(content: params[:message].to_s, user_id: session[:id].to_i, created_at: Time.new)
+  if message.errors.any?
+    @add_errors = message.errors.full_messages[0]
+    erb :error
   else
-    '<center>添加留言失败，请确认留言字数大于等于10！<br><a href="#" onClick=" javascript :history.back(-1);">重新编辑</a></center>'
+    @add_success = '添加留言成功！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/">'
+    erb :success
   end
 end
 
 get '/delete/:id' do # 按照Id删除留言
-  check = session[:status].to_i
-  if check == 1
-    a = Message.find_by_sql("select * from messages where id = '#{params[:id]}'")
-    if a.length == 1
-      if a[0].user_id == session[:id]
-        Message.delete(params[:id].to_i)
-        '<center>删除成功！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/myaccount"</center>'
-      else
-        '<center>对不起，您不是该留言的作者，您没有权限删除！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/myaccount"</center>'
-      end
+  a = Message.find_by(id: params[:id])
+  if !a.nil?
+    if a.user_id == session[:id]
+      Message.delete(params[:id].to_i)
+      @delete_success = '<center>删除成功！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/myaccount"</center>'
     else
-      '<center>此id不存在！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/myaccount"</center>'
+      @delete_errors = '<center>对不起，您不是该留言的作者，您没有权限删除！'
     end
   else
-    '<center>您当前未登录！<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
+    @delete_errors = '<center>此id不存在！'
   end
 end
 
@@ -133,56 +112,63 @@ post '/edit/:id' do # 对主页编辑按钮的响应    对留言内容进行再
 end
 
 post '/edit' do # 对再次编辑的内容进行判定
-  if params[:message].to_s.length >= 10
-    a = Message.find(params[:id])
-    a.content = params[:message]
-    a.created_at = Time.new
-    a.save
-    '<center>编辑成功！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/">'
+  a = Message.find(params[:id])
+  a.content = params[:message]
+  a.created_at = Time.new
+  a.save
+  if !a.errors.any?
+    @edit_success = '<center>编辑成功！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/myaccount">'
+    erb :success
   else
-    '<center>编辑留言失败，请确认留言字数大于等于10！<br><a href="#" onClick=" javascript :history.back(-1);">重新编辑</a></center>'
+    @edit_errors = a.errors.full_messages
+    erb :error
   end
 end
 
 get '/myaccount' do
-  check = session[:status].to_i
-  if check == 1
-    a = User.find(session[:id])
-    @mess = a.messages
-    @mess = @mess.sort_by(&:created_at)
-    erb :myaccount
-  else
-    '<center>您当前未登录！<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
-  end
+  a = User.find(session[:id])
+  @mess = a.messages
+  @mess = @mess.sort_by(&:created_at)
+  erb :myaccount
 end
 
 get '/change_password' do
-  check = session[:status].to_i
-  if check == 1
-    erb :change_password
-  else
-    '<center>您当前未登录！<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
-  end
+  erb :change_password
 end
 
 post '/change_password' do
-  oldpassword = Digest::SHA1.hexdigest(params[:oldpassword].to_s)
-  a = User.find(session[:id])
-  if a.password == oldpassword
-    a.password = Digest::SHA1.hexdigest(params[:newpassword])
-    a.save
-    session[:status] = 0
-    '<center>修改密码成功！请重新登陆<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
-  else
-    '<center>原密码不正确！请重新输入<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/change_password"></center>'
+  @change_password_success = []
+  if params[:newpassword] == params[:check_newpassword]
+    oldpassword = Digest::SHA1.hexdigest(params[:oldpassword].to_s)
+    a = User.find(session[:id])
+    if a.password == oldpassword
+      a.password = params[:newpassword] # 多此一举后续可以在model中添加对密码的各种验证
+      a.save
+      if a.errors.any?
+        @change_password_errors = a.errors.full_messages
+        erb :error
+      else
+        a.password = Digest::SHA1.hexdigest(params[:newpassword])
+        a.save
+        session[:id] = nil
+        @change_password_success = '<center>修改密码成功！请重新登陆<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
+      end
+    else
+      @change_password_errors[0] = '原密码不正确！请重新输入'
+      erb :error
+    end
   end
 end
 
 get '/exit' do
-  session[:status] = 0
+  session[:id] = nil
   redirect to '/login'
 end
 
 not_found do # 对其他错误访问请求的响应
   '<center>404 您访问的页面不存在！<br>两秒后自动返回主页<meta http-equiv="refresh" content="2;url=/"></center>'
+end
+
+after do
+  ActiveRecord::Base.connection.close
 end
