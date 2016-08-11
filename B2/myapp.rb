@@ -97,12 +97,12 @@ get '/delete/:id' do # 按照Id删除留言
   if !a.nil?
     if a.user_id == session[:id]
       Message.delete(params[:id].to_i)
-      @delete_success = '<center>删除成功！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/myaccount"</center>'
+      @delete_success = '删除成功！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/myaccount"</center>'
     else
-      @delete_errors = '<center>对不起，您不是该留言的作者，您没有权限删除！'
+      @delete_errors = '对不起，您不是该留言的作者，您没有权限删除！'
     end
   else
-    @delete_errors = '<center>此id不存在！'
+    @delete_errors = '此id不存在！'
   end
 end
 
@@ -117,7 +117,7 @@ post '/edit' do # 对再次编辑的内容进行判定
   a.created_at = Time.new
   a.save
   if !a.errors.any?
-    @edit_success = '<center>编辑成功！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/myaccount">'
+    @edit_success = '编辑成功！<br>两秒后自动返回<meta http-equiv="refresh" content="2;url=/myaccount">'
     erb :success
   else
     @edit_errors = a.errors.full_messages
@@ -151,7 +151,7 @@ post '/change_password' do
         a.password = Digest::SHA1.hexdigest(params[:newpassword])
         a.save
         session[:id] = nil
-        @change_password_success = '<center>修改密码成功！请重新登陆<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login"></center>'
+        @change_password_success = '修改密码成功！请重新登陆<br>两秒后自动返回登陆界面<meta http-equiv="refresh" content="2;url=/login">'
       end
     else
       @change_password_errors[0] = '原密码不正确！请重新输入'
