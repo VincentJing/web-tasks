@@ -13,14 +13,14 @@ admin_id   | int         | 管理员id
 created_at | datetime    | 创建时间
 updated_at | datetime    | 修改时间
 
-### categorys表（关联posts表）
+### categories表（关联posts表）
 
 字段名   | 类型          | 字段解释
 ----- | ----------- | ----
 id    | int         | 主键
 title | varchar(20) | 分类名称
 
-### post_categories表（关联表：实现posts表与categorys表的多对多关联）
+### post_category表（关联表：实现posts表与categorys表的多对多关联）
 
 字段名         | 类型  | 字段解释
 ----------- | --- | --------
