@@ -2,7 +2,7 @@
 
 ## 数据表结构设计
 
-### posts表
+### posts表（关联comments表）
 
 字段名        | 类型          | 字段解释
 ---------- | ----------- | -----
@@ -12,7 +12,13 @@ text       | text        | 文章内容
 admin_id   | int         | 管理员id
 created_at | datetime    | 创建时间
 updated_at | datetime    | 修改时间
-type       | varchar(15) | 文章分类
+
+### categorys表（关联posts表）
+
+字段名   | 类型          | 字段解释
+----- | ----------- | ----
+id    | int         | 主键
+title | varchar(20) | 分类名称
 
 ### comments表
 
