@@ -40,16 +40,6 @@ author     | varchar(15)  | 评论者姓名
 email      | varchar(30)  | 评论者邮箱
 status     | boolean      | 留言是否通过审核
 
-### feedbacks表
-
-字段名     | 类型           | 字段解释
-------- | ------------ | ------
-id      | int          | 主键
-content | varchar(100) | 反馈内容
-author  | varchar(15)  | 反馈者姓名
-email   | varchar(30)  | 反馈者邮箱
-status  | boolean      | 反馈是否已读
-
 ### admins表
 
 字段名      | 类型          | 字段解释
