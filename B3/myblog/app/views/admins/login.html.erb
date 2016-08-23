@@ -1,0 +1,18 @@
+<h1>管理员登陆</h1>
+
+<%= form_for :admin, url: check_login_admins_path do |f| %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.text_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
