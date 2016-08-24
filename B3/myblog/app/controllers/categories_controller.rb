@@ -7,6 +7,12 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
+  def show_post_by_category
+    category = Category.find(params[:id])
+    @posts = category.posts
+    render 'posts/index'
+  end
+
   # GET /categories/1
   # GET /categories/1.json
   def show
@@ -62,13 +68,14 @@ class CategoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_category
-      @category = Category.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def category_params
-      params.require(:category).permit(:title)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_category
+    @category = Category.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def category_params
+    params.require(:category).permit(:title)
+  end
 end

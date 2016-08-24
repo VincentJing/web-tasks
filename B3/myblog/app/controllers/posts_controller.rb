@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comment = Comment.new
     @post = set_post
   end
 
@@ -41,13 +42,28 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+    if Category.find_by(title: params[:category].to_s).id == @post.categories[0].id # 重新编辑时分类是否改变
+      respond_to do |format|
+        if @post.update(post_params)
+          format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+          format.json { render :show, status: :ok, location: @post }
+        else
+          format.html { render :edit }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      @post.destroy
+      category = Category.find_by(title: params[:category].to_s)
+      @post = category.posts.create(post_params)
+      respond_to do |format|
+        if @post.valid?
+          format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+          format.json { render :show, status: :ok, location: @post }
+        else
+          format.html { render :edit }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

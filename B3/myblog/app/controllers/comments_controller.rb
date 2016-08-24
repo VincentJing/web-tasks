@@ -3,22 +3,19 @@ class CommentsController < ApplicationController
 
   # GET /comments
   # GET /comments.json
-  def index
+  def manage
     @comments = Comment.all
   end
 
   # GET /comments/1
   # GET /comments/1.json
-  def show
+  def index
+    @comments = Comment.all
   end
 
   # GET /comments/new
   def new
     @comment = Comment.new
-  end
-
-  # GET /comments/1/edit
-  def edit
   end
 
   # POST /comments
@@ -27,20 +24,16 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
     @comment.status = false
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @post, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.save
+      redirect_to @post, notice: 'Comment was successfully created.'
+    else
+      render template: 'posts/show'
     end
   end
 
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
-  def update
+  def update # 审核
     @post = Post.find(params[:post_id])
     @comment = set_comment
     @comment.status = true
@@ -58,9 +51,10 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
+    @post = Post.find(params[:post_id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to post_path(@post), notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

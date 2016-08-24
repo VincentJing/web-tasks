@@ -1,6 +1,9 @@
-<h1>Editing Post</h1>
-
-<%= render 'form', post: @post %>
-
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+<div class="panel panel-info">
+  <div class="panel-heading">编辑文章</div>
+  <div class="panel-body">
+    <%= render 'form', post: @post %>
+    <div class="btn btn-success ">
+      <%= link_to 'Back', posts_path %>
+    </div>
+  </div>
+</div>
