@@ -10,10 +10,16 @@ class AdminsController < ApplicationController
   def check_login
     @admin = Admin.new(admin_params)
     if Admin.check_login(@admin)
+      session[:status] = true
       redirect_to posts_path
     else
       redirect_to login_admins_path
     end
+  end
+
+  def exit
+    session[:status] = false
+    redirect_to login_admins_path
   end
 
   def signup
@@ -36,7 +42,7 @@ class AdminsController < ApplicationController
 
     respond_to do |format|
       if @admin.save
-        format.html { redirect_to @admin, notice: 'Admin was successfully created.' }
+        format.html { redirect_to login_admins_path, notice: 'Admin was successfully created.' }
         format.json { render :show, status: :created, location: @admin }
       else
         format.html { render :new }

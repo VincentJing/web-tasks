@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_login
   # GET /categories
   # GET /categories.json
   def index
@@ -77,5 +77,12 @@ class CategoriesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def category_params
     params.require(:category).permit(:title)
+  end
+
+  def require_login
+    unless session[:status]
+      flash[:error] = '你当前未登录，请登录！'
+      redirect_to login_admins_path
+    end
   end
 end

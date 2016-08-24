@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'login'
       post 'check_login'
       get 'signup'
+      get 'exit'
     end
   end
   resources :posts do

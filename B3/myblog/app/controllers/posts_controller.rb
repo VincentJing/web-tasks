@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_login
   # GET /posts
   # GET /posts.json
   def index
@@ -88,5 +88,12 @@ class PostsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
     params.require(:post).permit(:title, :content)
+  end
+
+  def require_login
+    unless session[:status]
+      flash[:error] = '你当前未登录，请登录！'
+      redirect_to login_admins_path
+    end
   end
 end

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_login
   # GET /comments
   # GET /comments.json
   def manage
@@ -69,5 +69,12 @@ class CommentsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def comment_params
     params.require(:comment).permit(:post_id, :content, :email)
+  end
+
+  def require_login
+    unless session[:status]
+      flash[:error] = '你当前未登录，请登录！'
+      redirect_to login_admins_path
+    end
   end
 end
