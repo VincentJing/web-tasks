@@ -67,11 +67,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:post_id, :content, :email)
   end
-
-  def require_login
-    unless session[:status]
-      flash[:error] = '你当前未登录，请登录！'
-      redirect_to login_admins_path
-    end
-  end
 end

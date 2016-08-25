@@ -78,11 +78,4 @@ class CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:title)
   end
-
-  def require_login
-    unless session[:status]
-      flash[:error] = '你当前未登录，请登录！'
-      redirect_to login_admins_path
-    end
-  end
 end
