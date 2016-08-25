@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   end
   resources :posts do
     resources :comments, only: [:new, :create, :update, :destroy]
+    collection do
+      get 'search'
+    end
   end
   resources :comments, only: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

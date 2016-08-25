@@ -7,6 +7,24 @@ class PostsController < ApplicationController
     @posts = Post.paginate(page: params[:page], per_page: 10)
   end
 
+  def search
+    if params[:search].to_s == ''
+      @posts = Post.paginate(page: params[:page], per_page: 10)
+      render 'index'
+    else
+      @query = Post.search do
+        fulltext params[:search]
+      end
+      @posts = @query.results
+      if @posts.empty?
+        flash[:notice] = '搜索结果为空'
+        render 'index'
+      else
+        render 'index'
+      end
+    end
+  end
+
   # GET /posts/1
   # GET /posts/1.json
   def show

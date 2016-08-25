@@ -66,6 +66,7 @@ GEM
     ffi (1.9.14)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    highline (1.7.8)
     i18n (0.7.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -97,7 +98,12 @@ GEM
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
+    options (2.3.2)
     pkg-config (1.1.7)
+    pr_geohash (1.0.0)
+    progress_bar (1.0.5)
+      highline (~> 1.6)
+      options (~> 2.3.0)
     puma (3.6.0)
     rack (2.0.1)
     rack-test (0.6.3)
@@ -133,6 +139,8 @@ GEM
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
     ref (2.0.0)
+    rsolr (1.1.1)
+      builder (>= 2.1.2)
     sass (3.4.22)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -151,6 +159,14 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sunspot (2.2.5)
+      pr_geohash (~> 1.0)
+      rsolr (~> 1.1.1)
+    sunspot_rails (2.2.5)
+      nokogiri
+      rails (>= 3)
+      sunspot (= 2.2.5)
+    sunspot_solr (2.2.5)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -185,12 +201,15 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   mysql2 (>= 0.3.18, < 0.5)
+  progress_bar
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
   rails_kindeditor
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
+  sunspot_rails
+  sunspot_solr
   therubyracer
   turbolinks (~> 5)
   tzinfo-data
