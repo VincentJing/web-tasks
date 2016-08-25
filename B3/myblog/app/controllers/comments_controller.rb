@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
     @comment.status = true
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to post_path(@post), notice: 'Comment was successfully passed.' }
+        format.html { redirect_to :back, notice: 'Comment was successfully passed.' }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit }

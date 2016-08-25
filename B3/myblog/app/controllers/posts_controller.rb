@@ -30,6 +30,7 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @post = set_post
+    @comments = @post.comments.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /posts/new
