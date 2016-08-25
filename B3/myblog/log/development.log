@@ -22000,3 +22000,195 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 71ms (Views: 60.0ms | ActiveRecord: 9.9ms | Solr: 0.0ms)
 
 
+DEPRECATION WARNING: alias_method_chain is deprecated. Please, use Module#prepend instead. From module, you can access the original method using super. (called from <top (required)> at /home/vincent/桌面/web-tasks/B3/myblog/config/environment.rb:5)
+DEPRECATION WARNING: after_filter is deprecated and will be removed in Rails 5.1. Use after_action instead. (called from block (2 levels) in <module:ClassMethods> at /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/abstract_controller/callbacks.rb:191)
+DEPRECATION WARNING: after_filter is deprecated and will be removed in Rails 5.1. Use after_action instead. (called from block (2 levels) in <module:ClassMethods> at /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/abstract_controller/callbacks.rb:191)
+Started GET "/posts" for 127.0.0.1 at 2016-08-25 22:12:55 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` LIMIT 10 OFFSET 0[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 20[0m
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 20[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 22[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 22[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 26[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 26[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 28[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 28[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 32[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 32[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 33[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 33[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 35[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 35[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 36[0m
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 36[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 37[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 37[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 38[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 38[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (86.5ms)
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT `categories`.* FROM `categories`[0m
+Completed 200 OK in 397ms (Views: 366.9ms | ActiveRecord: 12.9ms | Solr: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-08-25 22:12:57 +0800
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` LIMIT 10 OFFSET 0[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 20[0m
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 20[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 22[0m
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 22[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 26[0m
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 26[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 28[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 28[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 32[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 32[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 33[0m
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 33[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 35[0m
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 35[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 36[0m
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 36[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 37[0m
+  [1m[36mComment Load (2.3ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 37[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 38[0m
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 38[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (44.7ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories`[0m
+Completed 200 OK in 83ms (Views: 67.2ms | ActiveRecord: 14.3ms | Solr: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2016-08-25 22:12:58 +0800
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT `categories`.* FROM `categories`[0m
+  Rendered posts/_form.html.erb (14.5ms)
+  Rendered posts/new.html.erb within layouts/application (15.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT `categories`.* FROM `categories`[0m
+Completed 200 OK in 57ms (Views: 55.8ms | ActiveRecord: 0.8ms | Solr: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-08-25 22:13:00 +0800
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` LIMIT 10 OFFSET 0[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 20[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 20[0m
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 22[0m
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 22[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 26[0m
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 26[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 28[0m
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 28[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 32[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 32[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 33[0m
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 33[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 35[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 35[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 36[0m
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 36[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 37[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 37[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 38[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 38[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (41.3ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT `categories`.* FROM `categories`[0m
+Completed 200 OK in 93ms (Views: 81.0ms | ActiveRecord: 10.5ms | Solr: 0.0ms)
+
+
+Started GET "/posts/search?search=sda" for 127.0.0.1 at 2016-08-25 22:13:07 +0800
+Processing by PostsController#search as HTML
+  Parameters: {"search"=>"sda"}
+  [1m[32mSOLR Request (3.5ms)[0m  [ path=[1m[1mselect[0m parameters={fq: [1m[1m["type:Post"][0m, q: [1m[1m"sda"[0m, fl: [1m[1m"* score"[0m, qf: [1m[1m"title_text content_text"[0m, defType: [1m[1m"edismax"[0m, start: [1m[1m0[0m, rows: [1m[1m30[0m} ]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.7ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT `categories`.* FROM `categories`[0m
+Completed 200 OK in 50ms (Views: 45.0ms | ActiveRecord: 0.2ms | Solr: 3.5ms)
+
+
+Started GET "/posts/search?search=sda" for 127.0.0.1 at 2016-08-25 22:15:51 +0800
+Processing by PostsController#search as HTML
+  Parameters: {"search"=>"sda"}
+  [1m[32mSOLR Request (2.4ms)[0m  [ path=[1m[1mselect[0m parameters={fq: [1m[1m["type:Post"][0m, q: [1m[1m"sda"[0m, fl: [1m[1m"* score"[0m, qf: [1m[1m"title_text content_text"[0m, defType: [1m[1m"edismax"[0m, start: [1m[1m0[0m, rows: [1m[1m30[0m} ]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.5ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT `categories`.* FROM `categories`[0m
+Completed 200 OK in 43ms (Views: 39.2ms | ActiveRecord: 0.2ms | Solr: 2.4ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2016-08-25 22:15:53 +0800
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT `categories`.* FROM `categories`[0m
+  Rendered posts/_form.html.erb (5.0ms)
+  Rendered posts/new.html.erb within layouts/application (5.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT `categories`.* FROM `categories`[0m
+Completed 200 OK in 41ms (Views: 40.2ms | ActiveRecord: 0.2ms | Solr: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2016-08-25 22:15:53 +0800
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` LIMIT 10 OFFSET 0[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 20[0m
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 20[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 22[0m
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 22[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 26[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 26[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 28[0m
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 28[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 32[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 32[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 33[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 33[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 35[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 35[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 36[0m
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 36[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 37[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 37[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 38[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 38[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `posts`[0m
+  Rendered posts/index.html.erb within layouts/application (42.9ms)
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT `categories`.* FROM `categories`[0m
+Completed 200 OK in 82ms (Views: 69.4ms | ActiveRecord: 10.9ms | Solr: 0.0ms)
+
+
+Started GET "/posts/search?search=mysql" for 127.0.0.1 at 2016-08-25 22:16:07 +0800
+Processing by PostsController#search as HTML
+  Parameters: {"search"=>"mysql"}
+  [1m[32mSOLR Request (3.3ms)[0m  [ path=[1m[1mselect[0m parameters={fq: [1m[1m["type:Post"][0m, q: [1m[1m"mysql"[0m, fl: [1m[1m"* score"[0m, qf: [1m[1m"title_text content_text"[0m, defType: [1m[1m"edismax"[0m, start: [1m[1m0[0m, rows: [1m[1m30[0m} ]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 26[0m
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 26[0m
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 26[0m
+  Rendered posts/index.html.erb within layouts/application (5.3ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories`[0m
+Completed 200 OK in 76ms (Views: 63.1ms | ActiveRecord: 1.7ms | Solr: 3.3ms)
+
+
+Started GET "/posts/26" for 127.0.0.1 at 2016-08-25 22:16:09 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"26"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 26 LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `posts`.* FROM `posts` WHERE `posts`.`id` = 26 LIMIT 1[0m  [["id", 26], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` INNER JOIN `categories_posts` ON `categories`.`id` = `categories_posts`.`category_id` WHERE `categories_posts`.`post_id` = 26[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 26[0m
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT  `comments`.* FROM `comments` WHERE `comments`.`post_id` = 26 LIMIT 5 OFFSET 0[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`post_id` = 26[0m  [["post_id", 26]]
+  Rendered posts/show.html.erb within layouts/application (10.0ms)
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT `categories`.* FROM `categories`[0m
+Completed 200 OK in 56ms (Views: 51.4ms | ActiveRecord: 1.9ms | Solr: 0.0ms)
+
+
