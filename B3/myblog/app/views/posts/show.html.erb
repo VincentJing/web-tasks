@@ -1,16 +1,20 @@
-<p id="notice"><%= notice %></p>
-<% if @comment.errors.any? %>
-<div id="error_explanation">
-    <h2><%= pluralize(@comment.errors.count, "error") %>
-        prohibited this post from being saved:</h2>
+<div class="text-info text-center">
+  <p id="notice"><%= notice %></p>
+  <% if @comment.errors.any? %>
+  <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %>
+          prohibited this post from being saved:</h2>
 
-    <ul>
-        <% @comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-    </ul>
+      <ul>
+          <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+      </ul>
+  </div>
+  <% end %>
 </div>
-<% end %>
+
+
 <h3 class="text-center"><%= @post.title %></h3>
 <div class="panel panel-info">
   <div class="panel-heading">正文</div>

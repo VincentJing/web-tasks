@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "blog", :media => "all" %>
+    <%= javascript_include_tag "blog" %>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/posts">Myblog</a>
+            <div class="navbar-collapse collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav">
+                    <li><%= link_to "发布文章", new_post_path  %></li>
+                    <li><%= link_to "留言管理", comments_path  %></li>
+                    <li><%= link_to "文章管理", posts_path  %></li>
+                    <li><%= link_to "退出登陆", exit_admins_path  %></li>
+                </ul>
+            </div>
+            <div>
+                <form action="/posts/search" method="get" class="navbar-form navbar-right" role="search">
+                    <input class="form-control" type="text" name="search">
+                    <input class="form-control" type="submit" value="search">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <%= yield %>
+            </div>
+            <div class="col-md-3">
+                <div class="well sidebar-nav">
+                    <h3>Sidebar</h3>
+                    <ul class="nav nav-list">
+                        <li class="nav-header">文章分类：</li>
+                        <% Category.all.each do |i|%>
+                        <li><%= link_to i.title, show_post_by_category_category_path(i)  %></li>
+                        <% end %>
+                    </ul>
+                </div>
+                <!--/.well -->
+                <div id="demo">
+
+                    <div class="list-group">
+
+                        <a href="#" class="list-group-item active">Item 1</a>
+
+                        <a href="#" class="list-group-item">Item 2</a>
+
+                        <a href="#" class="list-group-item">Item 3</a>
+
+                        <a href="#" class="list-group-item">Item 4</a>
+
+                        <a href="#" class="list-group-item">Item 5</a>
+
+                        ...
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!--/span-->
+        </div>
+        <!--/row-->
+
+        <footer>
+            <p>&copy; Company 2016</p>
+        </footer>
+
+    </div>
+
+  </body>
+</html>

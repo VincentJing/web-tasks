@@ -1,3 +1,6 @@
+<div class="text-info text-center">
+  <%= notice %>
+</div>
 <div class="panel panel-info">
     <div class="panel-heading">
         评论列表
@@ -32,7 +35,7 @@
               <%end%>
             </div>
         </div>
-        <%= will_paginate @comments %>
         <% end %>
+        <%= will_paginate @comments %>
     </div>
 </div>
