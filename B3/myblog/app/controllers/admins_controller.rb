@@ -9,11 +9,47 @@ class AdminsController < ApplicationController
 
   def check_login
     @admin = Admin.new(admin_params)
-    if Admin.check_login(@admin)
-      session[:status] = true
-      redirect_to posts_path
+    if session[:locktime].nil?
+      if Admin.check_login(@admin)
+        session[:status] = true
+        session[:locktime] = nil
+        session[:times] = nil
+        redirect_to posts_path
+      else
+        if session[:times].nil?
+          session[:times] = 1
+        else
+          session[:times] += 1
+        end
+        if session[:times].to_i >= 5
+          session[:locktime] = Time.now.to_s
+          redirect_to login_admins_path, notice: '您的登陆失败次数已达到五次，请十分钟后再试'
+        else
+          redirect_to login_admins_path, notice: '账号或密码错误'
+        end
+      end
     else
-      redirect_to login_admins_path
+      m = (Time.now - Time.parse(session[:locktime].to_s)) / 60
+      if m > 10
+        session[:locktime] = nil
+        session[:times] = nil
+        if Admin.check_login(@admin)
+          session[:status] = true
+          session[:locktime] = nil
+          session[:times] = nil
+          redirect_to posts_path
+        else
+          if session[:times].nil?
+            session[:times] = 1
+          else
+            session[:times] += 1
+          end
+          session[:locktime] = Time.now if session[:times].to_i >= 5
+          redirect_to login_admins_path, notice: '您的登陆失败次数已达到五次，请十分钟后再试'
+        end
+      else
+        redirect_to login_admins_path, notice: "您的登陆失败次数已达到五次，请#{(10 - m).to_i}分钟后再试"
+      end
     end
   end
 

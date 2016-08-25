@@ -1,18 +1,29 @@
-<h1>管理员登陆</h1>
 
-<%= form_for :admin, url: check_login_admins_path do |f| %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<br><br><br><br><br><br><br><br>
+<div class="text-warning text-center">
+  <%= notice %>
+</div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    管理员登陆
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.text_field :password %>
+  <div class="panel-body">
+    <div class="form-horizontal">
+      <%= form_for :admin, url: check_login_admins_path do |f| %>
+      <div class="form-group">
+        <%= f.label :账号, :class => 'control-label col-md-2' %>
+        <div class="col-md-10">
+          <%= f.text_field :name, :class => 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :密码, :class => 'control-label col-md-2' %>
+        <div class="col-md-10">
+          <%= f.text_field :password, :class => 'form-control' %>
+        </div>
+      </div>
+      <%= f.submit :提交, :class => 'btn btn-success pull-right' %>
+      <% end %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
