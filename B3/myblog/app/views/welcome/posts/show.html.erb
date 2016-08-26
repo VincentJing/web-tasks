@@ -1,0 +1,79 @@
+<div class="text-info text-center">
+  <p id="notice"><%= notice %></p>
+  <% if @comment.errors.any? %>
+  <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %>
+          prohibited this post from being saved:</h2>
+
+      <ul>
+          <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+      </ul>
+  </div>
+  <% end %>
+</div>
+
+
+<h3 class="text-center"><%= @post.title %></h3>
+<div class="panel panel-info">
+  <div class="panel-heading">正文</div>
+  <div class="panel-body">
+    <div class="text-success">
+        <%= @post.content %>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <span>
+      发表于<%= @post.created_at.strftime("%Y-%m-%d")%>|分类：<%= @post.categories[0].title %>
+    </span>
+  </div>
+</div>
+<br>
+
+<div class="panel panel-info">
+    <div class="panel-heading">评论区</div>
+    <div class="panel-body">
+        <% @comments.each do |comment| %>
+        <% if !comment.id.nil? %>    <!-- 当留言失败时，失败的留言对象会保存在@post.comments数组中，坑爹-->
+        <% if comment.status == true %>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <%= comment.content%>
+            </div>
+            <div class="panel panel-footer">
+                <span>发表于<%= comment.created_at.strftime("%Y-%m-%d")%>
+                    | email:<%= comment.email %>
+                </span>
+                <%end%>
+            </div>
+        </div>
+        <% end %>
+        <% end %>
+        <%= will_paginate @comments %>
+    </div>
+</div>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        新建评论
+    </div>
+    <div class="panel-body">
+      <div class="form-horizontal">
+        <%= form_for :comment, url: welcome_post_comments_path(@post) do |f| %>
+        <div class="form-group">
+          <%= f.label :email, :class=>'col-md-2 control-label' %>
+          <div class="col-md-5">
+            <%= f.text_field :email, :class=>'form-control', :placeholder => 'Example: jingzf0214@gmail.com' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :content, :class=>'col-md-2 control-label' %>
+          <div class="col-md-10">
+            <%= f.text_area :content, :class=>'form-control', :rows => '4', :placeholder => "留言内容至少包含10个字符" %>
+          </div>
+        </div>
+        <%= f.submit :提交, :class => 'btn btn-success pull-right'%>
+        <% end %>
+      </div>
+    </div>
+</div>

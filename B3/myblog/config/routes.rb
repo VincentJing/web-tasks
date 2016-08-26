@@ -19,5 +19,18 @@ Rails.application.routes.draw do
     end
   end
   resources :comments, only: [:index]
+  namespace :welcome do
+    resources :categories, only: [:posts] do
+      member do
+        get 'posts'
+      end
+    end
+    resources :posts, only: [:index, :show] do
+      resources :comments, only: [:new, :create]
+      collection do
+        get 'search'
+      end
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
