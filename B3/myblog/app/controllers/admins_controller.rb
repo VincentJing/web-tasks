@@ -44,11 +44,15 @@ class AdminsController < ApplicationController
           else
             session[:times] += 1
           end
-          session[:locktime] = Time.now if session[:times].to_i >= 5
-          redirect_to login_admins_path, notice: '您的登陆失败次数已达到五次，请十分钟后再试'
+          if session[:times].to_i >= 5
+            session[:locktime] = Time.now.to_s
+            redirect_to login_admins_path, notice: '您的登陆失败次数已达到五次，请十分钟后再试'
+          else
+            redirect_to login_admins_path, notice: '账号或密码错误'
+          end
         end
       else
-        redirect_to login_admins_path, notice: "您的登陆失败次数已达到五次，请#{(10 - m).to_i}分钟后再试"
+        redirect_to login_admins_path, notice: "您的登陆失败次数已达到五次，请#{(11 - m).to_i}分钟后再试"
       end
     end
   end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :categories do
     member do
-      get 'show_post_by_category'
+      get 'posts'
     end
   end
   resources :admins do

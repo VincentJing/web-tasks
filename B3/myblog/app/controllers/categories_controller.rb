@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
-  def show_post_by_category
+  def posts
     category = Category.find(params[:id])
     @posts = category.posts.paginate(page: params[:page], per_page: 10)
     render 'posts/index'
