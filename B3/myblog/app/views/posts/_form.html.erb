@@ -1,16 +1,19 @@
 <div class="form-horizontal">
   <%= form_for(post) do |f| %>
+  <div class="text-info text-center">
     <% if post.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <div id="error_explanation">
+        <h2><%= pluralize(post.errors.count, "error") %>
+            prohibited this post from being saved:</h2>
 
         <ul>
-        <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
+            <% post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
         </ul>
-      </div>
+    </div>
     <% end %>
+  </div>
     <div class="form-group">
       <%= f.label :Title, :class => 'control-label col-md-2' %>
       <div class="col-md-5">

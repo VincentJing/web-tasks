@@ -29,7 +29,8 @@ class Welcome::PostsController < ApplicationController
   def show
     @comment = Comment.new
     @post = set_post
-    @comments = @post.comments.where(status: false).paginate(page: params[:page], per_page: 5)
+    @comments = Comment.where(post_id: params[:id].to_i, status: true)
+    @comments = @comments.paginate(page: params[:page], per_page: 5)
     render layout: 'welcome'
   end
 

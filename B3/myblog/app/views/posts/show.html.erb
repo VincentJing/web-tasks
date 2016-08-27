@@ -19,8 +19,8 @@
 <div class="panel panel-info">
   <div class="panel-heading">正文</div>
   <div class="panel-body">
-    <div class="text-success">
-        <%= @post.content %>
+    <div class="text-info">
+      <%= @post.content.html_safe %>
     </div>
   </div>
   <div class="panel-footer">
@@ -48,7 +48,7 @@
         <% if !comment.id.nil? %>    <!-- 当留言失败时，失败的留言对象会保存在@post.comments数组中，坑爹-->
         <div class="panel panel-default">
             <div class="panel-body">
-                <%= comment.content%>
+                <%= comment.content.html_safe%>
             </div>
             <div class="panel panel-footer">
 

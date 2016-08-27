@@ -30,7 +30,7 @@ p '文章生成完毕'
 
 Post.all.each do |i|
   10.times do
-    i.comments.create(email: 'jingzf0214@gamil.com', content: newpass(30), status = false)
+    i.comments.create(email: 'jingzf0214@gamil.com', content: newpass(30), status: false)
   end
 end
 p '评论生成完毕'
