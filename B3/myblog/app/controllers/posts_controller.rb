@@ -4,12 +4,12 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.paginate(page: params[:page], per_page: 10)
+    @posts = Post.paginate(page: params[:page], per_page: 10).order('created_at DESC')
   end
 
   def search
     if params[:search].to_s == ''
-      @posts = Post.paginate(page: params[:page], per_page: 10)
+      @posts = Post.paginate(page: params[:page], per_page: 10).order('created_at DESC')
       render 'index'
     else
       @query = Post.search do
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @post = set_post
-    @comments = @post.comments.paginate(page: params[:page], per_page: 5)
+    @comments = @post.comments.paginate(page: params[:page], per_page: 5).order('created_at DESC')
   end
 
   # GET /posts/new

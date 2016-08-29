@@ -13,12 +13,16 @@
                 <p><%= post.title%></p>
             </a>
             <span>
-              <small>发表于<%= post.created_at.strftime("%Y-%m-%d")%>|分类:<%= post.categories[0].title %>|评论数<%= post.comments.length%></small>
+              <small>
+                发表于<%= post.created_at.strftime("%Y-%m-%d")%>
+                |分类:<%= post.categories[0].title %>
+                |评论数<%= post.comments.select{|e| e.status == true }.length%>
+              </small>
             </span>
         </blockquote>
         <% end %>
     </div>
-    <div class="panel-footer">
+    <div class="apple_pagination">
       <%= will_paginate @posts %>
     </div>
 </div>

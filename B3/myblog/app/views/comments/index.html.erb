@@ -14,15 +14,16 @@
             <div class="panel-footer">
               <% if comment.status == false %>
               <%= form_for :comment, url: post_comment_path(comment.post_id,comment), method: :put do |f|%>
-              <span>发表于<%= comment.created_at.strftime("%Y-%m-%d")%>
-                  | email:<%= comment.email %>|
-                  <div class="pull-right">
-                    <input type="submit" name="name" value="审核通过" class="btn btn-success">
-                    <div class="btn btn-warning">
-                      <%= link_to '删除', post_comment_path(comment.post_id,comment), method: :delete, data: { confirm: 'Are you sure?' } %>
-                    </div>
+              <span>
+                发表于<%= comment.created_at.strftime("%Y-%m-%d")%>
+                | email:<%= comment.email %>|
+                <div class="pull-right">
+                  <input type="submit" name="name" value="审核通过" class="btn btn-success">
+                  <div class="btn btn-warning">
+                    <%= link_to '删除', post_comment_path(comment.post_id,comment), method: :delete, data: { confirm: 'Are you sure?' } %>
                   </div>
-                </span>
+                </div>
+              </span>
 
           <%end
              else%>
@@ -36,6 +37,8 @@
             </div>
         </div>
         <% end %>
-        <%= will_paginate @comments %>
+        <div class="apple_pagination">
+          <%= will_paginate @comments %>
+        </div>
     </div>
 </div>

@@ -2,26 +2,21 @@ class Welcome::PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.paginate(page: params[:page], per_page: 10)
+    @posts = Post.paginate(page: params[:page], per_page: 10).order('created_at DESC')
     render layout: 'welcome'
   end
 
   def search
     if params[:search].to_s == ''
-      @posts = Post.paginate(page: params[:page], per_page: 10)
-      render 'index'
+      @posts = Post.paginate(page: params[:page], per_page: 10).order('created_at DESC')
     else
       @query = Post.search do
         fulltext params[:search]
       end
       @posts = @query.results
-      if @posts.empty?
-        flash[:notice] = '搜索结果为空'
-        render 'index'
-      else
-        render 'index'
-      end
+      flash[:notice] = '搜索结果为空' if @posts.empty?
     end
+    render 'index', layout: 'welcome'
   end
 
   # GET /posts/1

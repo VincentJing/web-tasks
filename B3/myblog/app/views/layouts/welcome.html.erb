@@ -23,7 +23,7 @@
                 </ul>
             </div>
             <div>
-                <form action="/posts/search" method="get" class="navbar-form navbar-right" role="search">
+                <form action="/welcome/posts/search" method="get" class="navbar-form navbar-right" role="search">
                     <input class="form-control" type="text" name="search">
                     <input class="form-control" type="submit" value="search">
                 </form>
@@ -38,33 +38,29 @@
             </div>
             <div class="col-md-3">
                 <div class="well sidebar-nav">
-                    <h3>Sidebar</h3>
+                    <h3>文章分类</h3>
                     <ul class="nav nav-list">
-                        <li class="nav-header">文章分类：</li>
+                        <li class="nav-header"></li>
                         <% Category.all.each do |i|%>
                         <li><%= link_to i.title,  posts_welcome_category_path(i)  %></li>
                         <% end %>
                     </ul>
                 </div>
                 <!--/.well -->
-                <div id="demo">
+                <div class="panel panel-info">
+                  <div class="panel-heading">热门文章</div>
+                  <div class="panel-body">
+                    <% p = Post.all.sort_by { |e| e.comments.select{|i| i.status == true }.length }
+                       p.reverse!
+                       i = 0
+                       5.times do |i|%>
+                       <blockquote cite="http://">
+                         <%= link_to p[i].title, welcome_post_path(p[i])  %>
+                       </blockquote>
+                    <% i += 1
+                  end%>
 
-                    <div class="list-group">
-
-                        <a href="#" class="list-group-item active">Item 1</a>
-
-                        <a href="#" class="list-group-item">Item 2</a>
-
-                        <a href="#" class="list-group-item">Item 3</a>
-
-                        <a href="#" class="list-group-item">Item 4</a>
-
-                        <a href="#" class="list-group-item">Item 5</a>
-
-                        ...
-
-                    </div>
-
+                  </div>
                 </div>
 
             </div>

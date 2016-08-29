@@ -32,7 +32,10 @@
 <br>
 
 <div class="panel panel-info">
-    <div class="panel-heading">评论区</div>
+    <div class="panel-heading">
+      评论区
+      <span class="badge pull-right"><%= @comments.count%></span> 
+    </div>
     <div class="panel-body">
         <% @comments.each do |comment| %>
         <div class="panel panel-default">
@@ -47,7 +50,7 @@
         </div>
         <% end %>
     </div>
-    <div class="panel-footer">
+    <div class="apple_pagination">
       <%= will_paginate @comments %>
     </div>
 </div>

@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def index
-    @comments = Comment.all.paginate(page: params[:page], per_page: 8)
+    @comments = Comment.all.paginate(page: params[:page], per_page: 8).order('created_at DESC')
   end
 
   # GET /comments/new
