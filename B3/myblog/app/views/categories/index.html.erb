@@ -1,27 +1,65 @@
-<p id="notice"><%= notice %></p>
+<div class="text-center text-success">
+  <%= notice %>
+  <% if @category.errors.any? %>
+  <div id="error_explanation">
+      <h2><%= pluralize(@category.errors.count, "error") %>
+          prohibited this post from being saved:</h2>
 
-<h1>Categories</h1>
+      <ul>
+          <% @category.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+      </ul>
+  </div>
+  <% end %>
+</div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    新建分类
+  </div>
+  <div class="panel-body">
+    <div class="form-horizontal">
+      <%= form_for :category, url: categories_path do |f| %>
+      <div class="form-group">
+        <%= f.label :分类, :class => 'control-label col-md-2' %>
+        <div class="col-md-8">
+          <%= f.text_field :title, :class => 'form-control', :placeholder => "不能为空且不要多于五个字符" %>
+        </div>
+        <div class="col-md-2">
+          <%= f.submit :提交, :class => 'btn btn-success pull-right' %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.title %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Category', new_category_path %>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    分类管理
+  </div>
+  <div class="panel-body">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Number</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categories.each do |i| %>
+        <tr>
+          <th><%= i.title %></th>
+          <th><%= i.posts.count %></th>
+          <th>
+            <div class="btn btn-success pull-right">
+              <%= link_to "Delete", category_path(i), method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </th>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

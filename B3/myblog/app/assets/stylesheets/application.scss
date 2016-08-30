@@ -43,3 +43,9 @@ cursor: default; }
  color: black; }
  .apple_pagination a:hover, .apple_pagination a:focus {
    text-decoration: underline; }
+   .newline{
+   word-wrap: break-word;
+
+   //word-break设置强行换行;normal 亚洲语言和非亚洲语言的文本规则，允许在字内换行
+   word-break: normal;
+   }

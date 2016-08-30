@@ -19,7 +19,7 @@
 <div class="panel panel-info">
   <div class="panel-heading">正文</div>
   <div class="panel-body">
-    <div class="text-info">
+    <div class="text-info newline">
         <%= @post.content.html_safe %>
     </div>
   </div>
@@ -34,7 +34,7 @@
 <div class="panel panel-info">
     <div class="panel-heading">
       评论区
-      <span class="badge pull-right"><%= @comments.count%></span> 
+      <span class="badge pull-right"><%= @comments.count%></span>
     </div>
     <div class="panel-body">
         <% @comments.each do |comment| %>

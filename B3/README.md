@@ -26,7 +26,7 @@ updated_at | datetime    | 修改时间
 id    | int         | 主键
 title | varchar(20) | 分类名称
 
-### post_category表（关联表：实现posts表与categorys表的多对多关联）
+### categories_posts表（关联表：实现posts表与categorys表的多对多关联）
 
 字段名         | 类型  | 字段解释
 ----------- | --- | --------

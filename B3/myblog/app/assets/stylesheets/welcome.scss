@@ -30,3 +30,10 @@ text-decoration: none;
 color: black; }
 .apple_pagination a:hover, .apple_pagination a:focus {
   text-decoration: underline; }
+  //实现文本会自动换行，不会把网页撑开
+  .newline{
+  word-wrap: break-word;
+
+  //word-break设置强行换行;normal 亚洲语言和非亚洲语言的文本规则，允许在字内换行
+  word-break: normal;
+  }
