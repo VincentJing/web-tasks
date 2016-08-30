@@ -1,9 +1,5 @@
 # Rails 博客应用
 
-blog的view和controller是空的 还没弄（前台）
-
-a.sql 是导出的数据库文件
-
 配置sunspot用于全文搜索
 
 rake sunspot:solr:start
