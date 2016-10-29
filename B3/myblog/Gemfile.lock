@@ -100,11 +100,15 @@ GEM
       pkg-config (~> 1.1.7)
     options (2.3.2)
     pkg-config (1.1.7)
+    posix-spawn (0.3.11)
     pr_geohash (1.0.0)
     progress_bar (1.0.5)
       highline (~> 1.6)
       options (~> 2.3.0)
     puma (3.6.0)
+    pygments.rb (0.6.3)
+      posix-spawn (~> 0.3.6)
+      yajl-ruby (~> 1.2.0)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -138,6 +142,7 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    redcarpet (3.3.4)
     ref (2.0.0)
     rsolr (1.1.1)
       builder (>= 2.1.2)
@@ -186,6 +191,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
     will_paginate (3.1.0)
+    yajl-ruby (1.2.1)
 
 PLATFORMS
   ruby
@@ -200,8 +206,10 @@ DEPENDENCIES
   mysql2 (>= 0.3.18, < 0.5)
   progress_bar
   puma (~> 3.0)
+  pygments.rb
   rails (~> 5.0.0, >= 5.0.0.1)
   rails_kindeditor
+  redcarpet
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)

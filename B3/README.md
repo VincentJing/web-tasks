@@ -1,5 +1,7 @@
 # Rails 博客应用
 
+gem install posix-spawn gem install yajl-ruby
+
 配置sunspot用于全文搜索
 
 rake sunspot:solr:start
